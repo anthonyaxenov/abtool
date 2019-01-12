@@ -5,13 +5,13 @@ unit dMain;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Controls, Menus;
+  Classes, SysUtils, FileUtil, Controls, Menus, uPackage, uPackageList;
 
 type
 
-  { TMainDM }
+  { TdmMain }
 
-  TMainDM = class(TDataModule)
+  TdmMain = class(TDataModule)
     imgIcons: TImageList;
     mmMain: TMainMenu;
     mbInstallCheckAll: TMenuItem;
@@ -34,21 +34,81 @@ type
     mbOptionsPkg: TMenuItem;
     pmInstallTree: TPopupMenu;
     pmInstallCheck: TPopupMenu;
+    procedure DataModuleCreate(Sender: TObject);
   private
-
+    // Подготовка директорий
+    procedure PrepareDirs(); 
+    // Подготовка списков пакетов
+    procedure PreparePackages();
   public
+    { Публичные переменные, которые доступны во всех юнитах с подключенным uses ..., dMain }
 
+    // путь к файлу ABTool.exe
+    ABToolExePath: String;
+    // путь к директории ABTool
+    ABToolDataPath: String;
+    // путь к директории ABTool\Packages
+    ABToolPkgPath: String;
+    // путь к директории ABTool\Languages
+    ABToolLangPath: String;
+    // путь к директории ABTool\Logs
+    ABToolLogPath: String;
+    // Список объектов пакетов программ для установки
+    SoftPackages: TPackageList; 
+    // Список объектов пакетов утилит для запуска
+    ToolsPackages: TPackageList;
   end;
 
 var
-  MainDM: TMainDM;
+  dmMain: TdmMain;
 
 implementation
 
 {$R *.lfm}
 
-{ TMainDM }
-
+{ TdmMain }
+                       
+{------------------------------------------------------------------------------
+Конструктор:   TdmMain.Create()
+Назначение:    Создание датамодуля, подготовка путей и списков пакетов
+Вх. параметры: Sender: TObject
+------------------------------------------------------------------------------}
+procedure TdmMain.DataModuleCreate(Sender: TObject);
+begin
+  PrepareDirs();
+  PreparePackages();
+end;
+                    
+{------------------------------------------------------------------------------
+Процедура:     TdmMain.PreparePackages()
+Назначение:    Подготовка директорий
+------------------------------------------------------------------------------}
+procedure TdmMain.PrepareDirs();
+begin
+  ABToolExePath := ExtractFilePath(ParamStr(0));
+  ABToolDataPath := ABToolExePath + 'ABTool\';
+  ABToolPkgPath := ABToolDataPath + 'Packages\';
+  ABToolLangPath := ABToolDataPath + 'Languages\';
+  ABToolLogPath := ABToolDataPath + 'Logs\';
+  if not DirectoryExists(ABToolPkgPath) then
+    ForceDirectories(ABToolPkgPath);
+  if not DirectoryExists(ABToolLangPath) then
+    ForceDirectories(ABToolLangPath);
+  if not DirectoryExists(ABToolLogPath) then
+    ForceDirectories(ABToolLogPath);
+end;
+       
+{------------------------------------------------------------------------------
+Процедура:     TdmMain.PreparePackages()
+Назначение:    Подготовка списков пакетов
+------------------------------------------------------------------------------}
+procedure TdmMain.PreparePackages();
+begin
+  SoftPackages  := TPackageList.Create;
+  SoftPackages.Load(ptSoft);
+  ToolsPackages := TPackageList.Create;
+  ToolsPackages.Load(ptTools);
+end;
 
 end.
 

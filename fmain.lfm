@@ -1,14 +1,14 @@
 object fmMain: TfmMain
-  Left = 309
+  Left = 304
   Height = 450
-  Top = 88
+  Top = 87
   Width = 350
-  BorderStyle = bsSingle
+  BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'ABTool'
   ClientHeight = 430
   ClientWidth = 350
-  Constraints.MaxHeight = 450
-  Constraints.MaxWidth = 350
+  Constraints.MaxHeight = 500
+  Constraints.MaxWidth = 400
   Constraints.MinHeight = 450
   Constraints.MinWidth = 350
   Font.CharSet = RUSSIAN_CHARSET
@@ -3210,7 +3210,7 @@ object fmMain: TfmMain
     71FE000F5EFF000773FE000387FE800176FD80002DC38001693C0003D1190007
     36A3800F57F7800F8AFFC00F76FFC01F8BFFE03FBEFFF47FBDFF
   }
-  Menu = MainDM.mmMain
+  Menu = dmMain.mmMain
   OnCreate = FormCreate
   Position = poScreenCenter
   ShowHint = True
@@ -3220,11 +3220,11 @@ object fmMain: TfmMain
     Height = 430
     Top = 0
     Width = 350
-    ActivePage = tabSoft
+    ActivePage = tabTools
     Align = alClient
-    Images = MainDM.imgIcons
+    Images = dmMain.imgIcons
     TabHeight = 20
-    TabIndex = 0
+    TabIndex = 1
     TabOrder = 0
     object tabSoft: TTabSheet
       Caption = 'Установка'
@@ -3410,7 +3410,7 @@ object fmMain: TfmMain
       object edToolsSearch: TEdit
         Left = 0
         Height = 13
-        Top = 28
+        Top = 30
         Width = 342
         Align = alTop
         BorderSpacing.Top = 5
@@ -3421,13 +3421,13 @@ object fmMain: TfmMain
       end
       object pnToolsTop: TPanel
         Left = 0
-        Height = 23
+        Height = 25
         Top = 0
         Width = 342
         Align = alTop
         AutoSize = True
         BevelOuter = bvNone
-        ClientHeight = 23
+        ClientHeight = 25
         ClientWidth = 342
         TabOrder = 1
         object cmbToolsPkgSelect: TComboBox
@@ -3445,7 +3445,7 @@ object fmMain: TfmMain
         end
         object btnToolsPkgEdit: TSpeedButton
           Left = 316
-          Height = 23
+          Height = 25
           Hint = 'Редактировать пакет'
           Top = 0
           Width = 26
@@ -3491,7 +3491,7 @@ object fmMain: TfmMain
         end
         object btnToolsPkgReload: TSpeedButton
           Left = 290
-          Height = 23
+          Height = 25
           Hint = 'Перезагрузить пакет'
           Top = 0
           Width = 26
@@ -3532,6 +3532,7 @@ object fmMain: TfmMain
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
             FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
           }
+          OnClick = btnToolsPkgReloadClick
         end
       end
       object btnToolsRun: TButton
@@ -3552,7 +3553,7 @@ object fmMain: TfmMain
       object labToolsPkgDescription: TLabel
         Left = 0
         Height = 13
-        Top = 46
+        Top = 48
         Width = 342
         Align = alTop
         AutoSize = False
@@ -3563,8 +3564,8 @@ object fmMain: TfmMain
       end
       object vstToolsPkgContents: TVirtualStringTree
         Left = 0
-        Height = 308
-        Top = 62
+        Height = 306
+        Top = 64
         Width = 342
         Align = alClient
         BorderStyle = bsNone

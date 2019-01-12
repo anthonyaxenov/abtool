@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ComCtrls,
   StdCtrls, ExtCtrls, Buttons, ActnList, EditBtn, Menus, VirtualTrees, Types,
-  uFileUtils, uPackage, uPackageUtils;
+  dMain, uFileUtils, uPackage, uPackageUtils, uPackageList;
 
 type
 
@@ -34,11 +34,16 @@ type
     tabSystem: TTabSheet;
     tabTools: TTabSheet;
     vstSoftPkgContents: TVirtualStringTree;
-    vstToolsPkgContents: TVirtualStringTree;
-    procedure btnSoftPkgReloadClick(Sender: TObject);
+    vstToolsPkgContents: TVirtualStringTree;  
+    // Создание формы и обновление выпадающих меню пакетов программ и утилит
     procedure FormCreate(Sender: TObject);
+    // Обрабока клика по кнопке обновления выпадающего меню пакетов программ
+    procedure btnSoftPkgReloadClick(Sender: TObject);
+    // Обрабока клика по кнопке обновления выпадающего меню пакетов утилит
+    procedure btnToolsPkgReloadClick(Sender: TObject);
   private
-    procedure ReloadSoftPackagesList();
+    // Перезагрузка списка пакетов и выпадающих меню пакетов по указанному типу
+    procedure ReloadPackagesList(APackageType: TPackageType);
   public
 
   end;
@@ -51,22 +56,78 @@ implementation
 {$R *.lfm}
 
 { TfmMain }
-
-procedure TfmMain.btnSoftPkgReloadClick(Sender: TObject);
-begin
-  ReloadSoftPackagesList;
-end;
-
+          
+{------------------------------------------------------------------------------
+Процедура:     TfmMain.ReloadPackagesList()
+Назначение:    Создание формы и обновление выпадающих меню пакетов программ и утилит
+Вх. параметры: Sender: TObject
+------------------------------------------------------------------------------}
 procedure TfmMain.FormCreate(Sender: TObject);
 begin
-  ReloadSoftPackagesList;
+  ReloadPackagesList(ptSoft);
+  ReloadPackagesList(ptTools);
+end; 
+           
+{------------------------------------------------------------------------------
+Процедура:     TfmMain.btnSoftPkgReloadClick()
+Назначение:    Обрабока клика по кнопке обновления выпадающего меню пакетов программ
+Вх. параметры: Sender: TObject
+------------------------------------------------------------------------------}
+procedure TfmMain.btnSoftPkgReloadClick(Sender: TObject);
+begin
+  ReloadPackagesList(ptSoft);
+end;
+       
+{------------------------------------------------------------------------------
+Процедура:     TfmMain.btnToolsPkgReloadClick()
+Назначение:    Обрабока клика по кнопке обновления выпадающего меню пакетов утилит
+Вх. параметры: Sender: TObject
+------------------------------------------------------------------------------}
+procedure TfmMain.btnToolsPkgReloadClick(Sender: TObject);
+begin
+  ReloadPackagesList(ptTools);
 end;
 
-
-procedure TfmMain.ReloadSoftPackagesList();
-begin
-  cmbSoftPkgSelect.Items.AddStrings(GetPackagesIniFileList(ptSoft, False), True);
-  cmbSoftPkgSelect.ItemIndex := 0;
+{------------------------------------------------------------------------------
+Процедура:     TfmMain.ReloadPackagesList()
+Назначение:    Перезагрузка списка пакетов и выпадающих меню пакетов по указанному типу
+Вх. параметры: APackageType: TPackageType - тип списка пакета
+------------------------------------------------------------------------------}
+procedure TfmMain.ReloadPackagesList(APackageType: TPackageType);
+var
+  LastIndex: integer;
+  Key: Integer;
+  Pkg: TPackage;
+  Combo: TComboBox;
+  PackageList: TPackageList;
+begin 
+  case (APackageType) of
+    ptSoft: begin
+      Combo := cmbSoftPkgSelect;
+      PackageList := dmMain.SoftPackages;
+    end;
+    ptTools: begin
+      Combo := cmbToolsPkgSelect;
+      PackageList := dmMain.ToolsPackages;
+    end;
+    ptUnknown: raise Exception.Create('TfmMain.ReloadPackagesList(): передан ptUnknown');
+  end;
+  LastIndex := Combo.ItemIndex;
+  if LastIndex < 0 then
+    LastIndex := 0;
+  Combo.Clear;
+  PackageList.Reload();
+  if PackageList.Count > 0 then
+  begin
+    for Key := 0 to PackageList.Count - 1 do
+    begin
+      Pkg := PackageList[Key];
+      Combo.Items.Add(Pkg.Name + ' (' + ExtractFileName(Pkg.FileName) + ')');
+    end;
+  end;
+  if Combo.Items.Count <= LastIndex then
+    LastIndex := Combo.Items.Count - 1;
+  Combo.ItemIndex := LastIndex;
 end;
 
 end.

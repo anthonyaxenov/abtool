@@ -91,7 +91,7 @@
       <Unit2>
         <Filename Value="dmain.pas"/>
         <IsPartOfProject Value="True"/>
-        <ComponentName Value="MainDM"/>
+        <ComponentName Value="dmMain"/>
         <HasResources Value="True"/>
         <ResourceBaseClass Value="DataModule"/>
         <UnitName Value="dMain"/>
