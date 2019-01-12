@@ -1,0 +1,10 @@
+/_ignore
+/lib
+/backup
+#/ABTool
+*.exe
+*.dbg
+*.compiled
+*.ppu
+*.obj
+*.o
