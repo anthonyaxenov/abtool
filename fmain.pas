@@ -60,6 +60,7 @@ type
     procedure btnSoftPkgReloadClick(Sender: TObject);
     // Обрабока клика по кнопке обновления выпадающего меню пакетов утилит
     procedure btnToolsPkgReloadClick(Sender: TObject);
+    procedure PageControlChange(Sender: TObject);
     // Отображение отметок в нодах дерева программ
     procedure vstSoftPkgContentsInitNode(Sender: TBaseVirtualTree; ParentNode, Node: PVirtualNode;
       var InitialStates: TVirtualNodeInitStates);
@@ -208,6 +209,7 @@ procedure TfmMain.FormCreate(Sender: TObject);
 begin
   ReloadPackagesList(ptSoft);
   ReloadPackagesList(ptTools);
+  PageControl.ActivePageIndex := 0;
 end;
 
 {------------------------------------------------------------------------------
@@ -226,6 +228,16 @@ end;
 procedure TfmMain.btnToolsPkgReloadClick(Sender: TObject);
 begin
   ReloadPackagesList(ptTools);
+end;
+          
+{------------------------------------------------------------------------------
+Процедура:  TfmMain.PageControlChange()
+Назначение: Обрабока переключения вкладок
+------------------------------------------------------------------------------}
+procedure TfmMain.PageControlChange(Sender: TObject);
+begin
+  // меню выбора должно быть активно только на вкладке "Установка"
+  dmMain.mbCheck.Enabled := PageControl.ActivePageIndex = 0;
 end;
 
 {------------------------------------------------------------------------------

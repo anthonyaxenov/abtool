@@ -5,7 +5,7 @@ unit dMain;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Controls, Menus, uPackage, uPackageList;
+  Classes, SysUtils, FileUtil, Controls, Menus, VirtualTrees, uPackage, uPackageList;
 
 type
 
@@ -35,6 +35,8 @@ type
     pmInstallTree: TPopupMenu;
     pmInstallCheck: TPopupMenu;
     procedure DataModuleCreate(Sender: TObject);
+    procedure mbCheckAllClick(Sender: TObject);
+    procedure mbCheckNoneClick(Sender: TObject);
     procedure mbCollapseTreeClick(Sender: TObject);
     procedure mbExpandTreeClick(Sender: TObject);
   private
@@ -59,6 +61,8 @@ type
     SoftPackages: TPackageList; 
     // Список объектов пакетов утилит для запуска
     ToolsPackages: TPackageList;
+    // Установка состояния отметки для всех корневых нод указанного дерева
+    procedure SetVSTCheckState(AVST: TBaseVirtualTree; AState: boolean);
   end;
 
 var
@@ -75,12 +79,72 @@ uses fMain;
 {------------------------------------------------------------------------------
 Конструктор:   TdmMain.Create()
 Назначение:    Создание датамодуля, подготовка путей и списков пакетов
-Вх. параметры: Sender: TObject
 ------------------------------------------------------------------------------}
 procedure TdmMain.DataModuleCreate(Sender: TObject);
 begin
   PrepareDirs();
   PreparePackages();
+end;
+         
+{------------------------------------------------------------------------------
+Конструктор:   TdmMain.SetVSTCheckState()
+Назначение:    Установка состояния отметки для всех корневых нод указанного дерева
+Вх. параметры:
+  AVST: TBaseVirtualTree - дерево
+  AState: boolean - состояние отметок: TRUE выбрать все, FALSE снять выбор со всех
+------------------------------------------------------------------------------}
+procedure TdmMain.SetVSTCheckState(AVST: TBaseVirtualTree; AState: boolean);
+var
+  Node: PVirtualNode;  
+
+  // Установка состояния отметки ноды-родителя дочерним нодам
+  procedure CheckChildNodes(ANode: PVirtualNode);
+  var
+    ChildNode: PVirtualNode;
+  begin
+    ChildNode := AVST.GetFirstChild(ANode);
+    while Assigned(ChildNode) do
+    begin
+      CheckChildNodes(ChildNode);
+      ChildNode^.CheckState := ChildNode^.Parent^.CheckState;
+      ChildNode := AVST.GetNextSibling(ChildNode);
+    end;
+  end;
+
+begin
+  AVST.BeginUpdate;
+  try
+    Node := AVST.GetFirst;
+    while Assigned(Node) do
+    begin
+      if AState = true then
+        Node^.CheckState := csCheckedNormal
+      else
+        Node^.CheckState := csUncheckedNormal;
+      CheckChildNodes(Node);
+      Node := AVST.GetNextSibling(Node);
+    end;
+  finally
+    AVST.EndUpdate;
+  end;
+end;
+
+{------------------------------------------------------------------------------
+Конструктор:   TdmMain.mbCheckAllClick()
+Назначение:    Обработка клика п. меню "Выбрать всё"
+------------------------------------------------------------------------------}
+procedure TdmMain.mbCheckAllClick(Sender: TObject);
+begin
+  SetVSTCheckState(fmMain.vstSoftPkgContents, true);
+end; 
+     
+{------------------------------------------------------------------------------
+Конструктор:   TdmMain.mbCheckNoneClick()
+Назначение:    Обработка клика п. меню "Снять выбор"
+------------------------------------------------------------------------------}
+procedure TdmMain.mbCheckNoneClick(Sender: TObject);
+begin
+  SetVSTCheckState(fmMain.vstSoftPkgContents, false);
 end;
       
 {------------------------------------------------------------------------------
@@ -137,9 +201,6 @@ begin
   ToolsPackages := TPackageList.Create;
   ToolsPackages.Load(ptTools);
 end;
-
-
-
 
 end.
 

@@ -1,7 +1,7 @@
 object fmMain: TfmMain
-  Left = 299
+  Left = 430
   Height = 450
-  Top = 82
+  Top = 108
   Width = 350
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'ABTool'
@@ -3226,6 +3226,7 @@ object fmMain: TfmMain
     TabHeight = 20
     TabIndex = 0
     TabOrder = 0
+    OnChange = PageControlChange
     object tabSoft: TTabSheet
       Caption = 'Установка'
       ClientHeight = 402

@@ -3713,6 +3713,7 @@ object dmMain: TdmMain
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
         ImageIndex = 95
+        OnClick = mbCheckAllClick
       end
       object mbCheckInvert: TMenuItem
         Caption = 'Инвертировать'
@@ -3793,6 +3794,7 @@ object dmMain: TdmMain
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
         ImageIndex = 96
+        OnClick = mbCheckNoneClick
       end
     end
     object mbOptions: TMenuItem
