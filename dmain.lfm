@@ -3673,6 +3673,9 @@ object dmMain: TdmMain
         ShortCut = 24616
         OnClick = mbExpandTreeClick
       end
+      object MenuItem1: TMenuItem
+        Caption = '-'
+      end
       object mbRefresh: TMenuItem
         Caption = 'Обновить'
         ImageIndex = 16
@@ -3721,10 +3724,12 @@ object dmMain: TdmMain
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
         ImageIndex = 95
+        ShortCut = 16449
         OnClick = mbCheckAllClick
       end
       object mbCheckInvert: TMenuItem
         Caption = 'Инвертировать'
+        Enabled = False
         Bitmap.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
           2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -3802,6 +3807,7 @@ object dmMain: TdmMain
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
         ImageIndex = 96
+        ShortCut = 24641
         OnClick = mbCheckNoneClick
       end
     end
@@ -3930,6 +3936,7 @@ object dmMain: TdmMain
         }
         Hint = 'Откроется в браузере по умолчанию'
         ImageIndex = 61
+        ShortCut = 112
       end
       object mbAbout: TMenuItem
         Caption = 'О программе...'

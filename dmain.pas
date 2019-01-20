@@ -14,6 +14,7 @@ type
   TdmMain = class(TDataModule)
     imgIcons: TImageList;
     mbRefresh: TMenuItem;
+    MenuItem1: TMenuItem;
     mmMain: TMainMenu;
     mbInstallCheckAll: TMenuItem;
     mbInstallExpandTree: TMenuItem;
