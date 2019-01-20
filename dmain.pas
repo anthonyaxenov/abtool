@@ -5,7 +5,8 @@ unit dMain;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Controls, Menus, VirtualTrees, uPackage, uPackageList;
+  Classes, SysUtils, FileUtil, Controls, Menus, VirtualTrees, uPackage,
+  uPackageList, fOptions;
 
 type
 
@@ -41,6 +42,7 @@ type
     procedure mbCheckNoneClick(Sender: TObject);
     procedure mbCollapseTreeClick(Sender: TObject);
     procedure mbExpandTreeClick(Sender: TObject);
+    procedure mbOptonsMainClick(Sender: TObject);
     procedure mbRefreshClick(Sender: TObject);
   private
     // Подготовка директорий
@@ -172,6 +174,11 @@ begin
     0: fmMain.vstSoftPkgContents.FullExpand();
     1: fmMain.vstToolsPkgContents.FullExpand();
   end;
+end;
+
+procedure TdmMain.mbOptonsMainClick(Sender: TObject);
+begin
+  fmOptions.ShowModal;
 end;
 
 {------------------------------------------------------------------------------

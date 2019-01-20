@@ -75,7 +75,7 @@
         <PackageName Value="LCL"/>
       </Item2>
     </RequiredPackages>
-    <Units Count="7">
+    <Units Count="8">
       <Unit0>
         <Filename Value="ABTool.lpr"/>
         <IsPartOfProject Value="True"/>
@@ -116,6 +116,13 @@
         <IsPartOfProject Value="True"/>
         <UnitName Value="uPackageList"/>
       </Unit6>
+      <Unit7>
+        <Filename Value="foptions.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="fmOptions"/>
+        <ResourceBaseClass Value="Form"/>
+        <UnitName Value="fOptions"/>
+      </Unit7>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

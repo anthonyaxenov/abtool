@@ -2,9 +2,9 @@ object dmMain: TdmMain
   OnCreate = DataModuleCreate
   OldCreateOrder = False
   Height = 84
-  HorizontalOffset = 313
+  HorizontalOffset = 301
   VerticalOffset = 612
-  Width = 717
+  Width = 810
   PPI = 96
   object imgIcons: TImageList
     left = 32
@@ -3852,6 +3852,7 @@ object dmMain: TdmMain
           BF63FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
         ImageIndex = 4
+        OnClick = mbOptonsMainClick
       end
       object mbOptionsPkg: TMenuItem
         Caption = 'Управление пакетами...'

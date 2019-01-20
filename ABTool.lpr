@@ -12,7 +12,7 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   uFileUtils,
   uPackage,
   uPackageUtils,
-  uPackageList;
+  uPackageList, fOptions;
 
 {$R *.res}
 
@@ -21,6 +21,7 @@ begin
   Application.Initialize;
   Application.CreateForm(TdmMain, dmMain);
   Application.CreateForm(TfmMain, fMain.fmMain);
+  Application.CreateForm(TfmOptions, fmOptions);
   Application.Run;
 end.
 

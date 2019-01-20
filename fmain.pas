@@ -32,7 +32,6 @@ type
     btnSoftStart: TButton;
     btnToolsPkgEdit: TSpeedButton;
     btnToolsPkgReload: TSpeedButton;
-    btnToolsRun: TButton;
     cmbSoftPkgSelect: TComboBox;
     cmbToolsPkgSelect: TComboBox;
     edSoftSearch: TEdit;
