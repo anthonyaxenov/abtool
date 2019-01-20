@@ -6,45 +6,50 @@ interface
 
 uses
   Classes, SysUtils, FileUtil, Forms, Controls, Graphics, Dialogs, ButtonPanel,
-  ComCtrls, ExtCtrls, StdCtrls, Menus;
+  ComCtrls, ExtCtrls, StdCtrls, Menus, Types;
 
 type
 
   { TfmOptions }
 
   TfmOptions = class(TForm)
-    Button1: TButton;
-    Button2: TButton;
-    Button3: TButton;
-    CheckBox1: TCheckBox;
-    CheckBox10: TCheckBox;
-    CheckBox11: TCheckBox;
-    CheckBox2: TCheckBox;
-    CheckBox3: TCheckBox;
-    CheckBox4: TCheckBox;
-    CheckBox5: TCheckBox;
-    CheckBox6: TCheckBox;
-    CheckBox7: TCheckBox;
-    CheckBox8: TCheckBox;
-    CheckBox9: TCheckBox;
-    GroupBox1: TGroupBox;
-    GroupBox2: TGroupBox;
+    btnSetDefault: TButton;
+    btnSave: TButton;
+    btnClose: TButton;
+    btnCheckUpdates: TButton;
+    btnChangelog: TButton;
+    btnBugReport: TButton;
+    btnOnlineHelp: TButton;
+    btnLicense: TButton;
+    cbChkExitCodes: TCheckBox;
+    cbDntUnChkItems: TCheckBox;
+    cbExpandSoft: TCheckBox;
+    cbExpandTools: TCheckBox;
+    cbShowProgress: TCheckBox;
+    cbColorSoftTree: TCheckBox;
+    cbOnTop: TCheckBox;
+    cbShowPkgDesc: TCheckBox;
+    cbQuietREG: TCheckBox;
+    cbHideOnTool: TCheckBox;
+    cbDrawOutlines: TCheckBox;
+    cbScreenSnap: TCheckBox;
+    grpOptMainform: TGroupBox;
+    grpOptInstall: TGroupBox;
+    grpOptTools: TGroupBox;
     imgLogo: TImage;
-    Label1: TLabel;
-    Label2: TLabel;
-    Label3: TLabel;
-    Label4: TLabel;
-    Label5: TLabel;
-    Label6: TLabel;
-    Label7: TLabel;
-    Label8: TLabel;
-    mmAbout: TMemo;
+    labAboutTitle: TLabel;
+    labCopyright: TLabel;
+    labDescription: TLabel;
+    mmLicenseText: TMemo;
     PageControl: TPageControl;
     tabCommon: TTabSheet;
-    tabUI: TTabSheet;
     tabPackages: TTabSheet;
     tabAbout: TTabSheet;
+    tabLicense: TTabSheet;
+    procedure btnCloseClick(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure tabAboutContextPopup(Sender: TObject; MousePos: TPoint;
+      var Handled: Boolean);
   private
 
   public
@@ -61,6 +66,17 @@ implementation
 { TfmOptions }
 
 procedure TfmOptions.FormCreate(Sender: TObject);
+begin
+
+end;
+
+procedure TfmOptions.btnCloseClick(Sender: TObject);
+begin
+  Self.Destroy;
+end;
+
+procedure TfmOptions.tabAboutContextPopup(Sender: TObject; MousePos: TPoint;
+  var Handled: Boolean);
 begin
 
 end;

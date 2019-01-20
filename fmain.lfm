@@ -1,7 +1,7 @@
 object fmMain: TfmMain
   Left = 301
   Height = 450
-  Top = 85
+  Top = 108
   Width = 350
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'ABTool'
@@ -13,7 +13,7 @@ object fmMain: TfmMain
   Constraints.MinWidth = 350
   Font.CharSet = RUSSIAN_CHARSET
   Font.Height = -11
-  Font.Name = 'Microsoft Sans Serif'
+  Font.Name = 'Tahoma'
   Font.Pitch = fpVariable
   Font.Quality = fqDraft
   Icon.Data = {
@@ -3222,19 +3222,18 @@ object fmMain: TfmMain
     Width = 350
     ActivePage = tabSoft
     Align = alClient
-    TabHeight = 20
     TabIndex = 0
     TabOrder = 0
     TabWidth = 86
     OnChange = PageControlChange
     object tabSoft: TTabSheet
       Caption = 'Установка'
-      ClientHeight = 402
+      ClientHeight = 404
       ClientWidth = 342
       ImageIndex = 104
       object vstSoftPkgContents: TVirtualStringTree
         Left = 0
-        Height = 299
+        Height = 301
         Top = 62
         Width = 342
         Align = alClient
@@ -3396,13 +3395,13 @@ object fmMain: TfmMain
       object btnSoftStart: TButton
         Left = 0
         Height = 38
-        Top = 364
+        Top = 366
         Width = 342
         Align = alBottom
         Caption = 'Приступить к установке'
         Font.CharSet = RUSSIAN_CHARSET
         Font.Height = -16
-        Font.Name = 'Microsoft Sans Serif'
+        Font.Name = 'Tahoma'
         Font.Pitch = fpVariable
         Font.Quality = fqDraft
         ParentFont = False
@@ -3411,7 +3410,7 @@ object fmMain: TfmMain
     end
     object tabTools: TTabSheet
       Caption = 'Утилиты'
-      ClientHeight = 402
+      ClientHeight = 400
       ClientWidth = 342
       ImageIndex = 62
       object edToolsSearch: TEdit
@@ -3557,7 +3556,7 @@ object fmMain: TfmMain
       end
       object vstToolsPkgContents: TVirtualStringTree
         Left = 0
-        Height = 340
+        Height = 338
         Top = 62
         Width = 342
         Align = alClient

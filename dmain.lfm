@@ -3729,7 +3729,6 @@ object dmMain: TdmMain
       end
       object mbCheckInvert: TMenuItem
         Caption = 'Инвертировать'
-        Enabled = False
         Bitmap.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
           2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
@@ -3813,7 +3812,7 @@ object dmMain: TdmMain
     end
     object mbOptions: TMenuItem
       Caption = 'Настройки'
-      object mbOptonsMain: TMenuItem
+      object mbOptionsMain: TMenuItem
         Caption = 'Основные...'
         Bitmap.Data = {
           36040000424D3604000000000000360000002800000010000000100000000100
@@ -3852,7 +3851,7 @@ object dmMain: TdmMain
           BF63FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
         ImageIndex = 4
-        OnClick = mbOptonsMainClick
+        OnClick = mbOptionsMainClick
       end
       object mbOptionsPkg: TMenuItem
         Caption = 'Управление пакетами...'
@@ -3893,6 +3892,7 @@ object dmMain: TdmMain
           D631FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
         ImageIndex = 103
+        OnClick = mbOptionsPkgClick
       end
     end
     object mbHelp: TMenuItem
@@ -3978,6 +3978,7 @@ object dmMain: TdmMain
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
         ImageIndex = 56
+        OnClick = mbAboutClick
       end
     end
   end

@@ -12,7 +12,8 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   uFileUtils,
   uPackage,
   uPackageUtils,
-  uPackageList, fOptions;
+  uPackageList,
+  fOptions;
 
 {$R *.res}
 
@@ -20,8 +21,7 @@ begin
   RequireDerivedFormResource := True;
   Application.Initialize;
   Application.CreateForm(TdmMain, dmMain);
-  Application.CreateForm(TfmMain, fMain.fmMain);
-  Application.CreateForm(TfmOptions, fmOptions);
+  Application.CreateForm(TfmMain, fmMain);
   Application.Run;
 end.
 

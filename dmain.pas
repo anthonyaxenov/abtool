@@ -5,8 +5,8 @@ unit dMain;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Controls, Menus, VirtualTrees, uPackage,
-  uPackageList, fOptions;
+  Classes, SysUtils, FileUtil, Controls, Menus, Forms, PopupNotifier,
+  VirtualTrees, uPackage, uPackageList, fOptions;
 
 type
 
@@ -33,16 +33,18 @@ type
     mbHelp: TMenuItem;
     mbOnlineHelp: TMenuItem;
     mbAbout: TMenuItem;
-    mbOptonsMain: TMenuItem;
+    mbOptionsMain: TMenuItem;
     mbOptionsPkg: TMenuItem;
     pmInstallTree: TPopupMenu;
     pmInstallCheck: TPopupMenu;
     procedure DataModuleCreate(Sender: TObject);
+    procedure mbAboutClick(Sender: TObject);
     procedure mbCheckAllClick(Sender: TObject);
     procedure mbCheckNoneClick(Sender: TObject);
     procedure mbCollapseTreeClick(Sender: TObject);
     procedure mbExpandTreeClick(Sender: TObject);
-    procedure mbOptonsMainClick(Sender: TObject);
+    procedure mbOptionsMainClick(Sender: TObject);
+    procedure mbOptionsPkgClick(Sender: TObject);
     procedure mbRefreshClick(Sender: TObject);
   private
     // Подготовка директорий
@@ -90,6 +92,16 @@ begin
   PrepareDirs();
   PreparePackages();
 end;
+
+procedure TdmMain.mbAboutClick(Sender: TObject);
+var
+  fmOptions: TfmOptions;
+begin
+  fmOptions := TfmOptions.Create(fmMain);
+  fmOptions.PageControl.ActivePageIndex := 2;
+  fmOptions.ShowModal;
+end;
+
          
 {------------------------------------------------------------------------------
 Конструктор:   TdmMain.SetVSTCheckState()
@@ -176,11 +188,6 @@ begin
   end;
 end;
 
-procedure TdmMain.mbOptonsMainClick(Sender: TObject);
-begin
-  fmOptions.ShowModal;
-end;
-
 {------------------------------------------------------------------------------
 Процедура:  TdmMain.mbRefreshClick()
 Назначение: Обновление списка пакетов и дерева на активной вкладке главного окна
@@ -222,6 +229,23 @@ begin
   SoftPackages.Load(ptSoft);
   ToolsPackages := TPackageList.Create;
   ToolsPackages.Load(ptTools);
+end;    
+
+procedure TdmMain.mbOptionsMainClick(Sender: TObject);
+var
+  fmOptions: TfmOptions;
+begin
+  fmOptions := TfmOptions.Create(fmMain);
+  fmOptions.ShowModal;
+end;
+
+procedure TdmMain.mbOptionsPkgClick(Sender: TObject);
+var
+  fmOptions: TfmOptions;
+begin
+  fmOptions := TfmOptions.Create(fmMain);
+  fmOptions.PageControl.ActivePageIndex := 1;
+  fmOptions.ShowModal;
 end;
 
 end.
