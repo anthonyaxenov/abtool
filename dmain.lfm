@@ -3628,6 +3628,7 @@ object dmMain: TdmMain
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
         ImageIndex = 21
+        OnClick = mbCollapseTreeClick
       end
       object mbExpandTree: TMenuItem
         Caption = 'Развернуть'
@@ -3668,6 +3669,7 @@ object dmMain: TdmMain
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
         ImageIndex = 22
+        OnClick = mbExpandTreeClick
       end
     end
     object mbCheck: TMenuItem

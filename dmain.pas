@@ -35,6 +35,8 @@ type
     pmInstallTree: TPopupMenu;
     pmInstallCheck: TPopupMenu;
     procedure DataModuleCreate(Sender: TObject);
+    procedure mbCollapseTreeClick(Sender: TObject);
+    procedure mbExpandTreeClick(Sender: TObject);
   private
     // Подготовка директорий
     procedure PrepareDirs(); 
@@ -64,6 +66,8 @@ var
 
 implementation
 
+uses fMain;
+
 {$R *.lfm}
 
 { TdmMain }
@@ -78,10 +82,34 @@ begin
   PrepareDirs();
   PreparePackages();
 end;
+      
+{------------------------------------------------------------------------------
+Процедура:  TdmMain.mbCollapseTreeClick()
+Назначение: Сворачивание дерева на активной вкладке главного окна
+------------------------------------------------------------------------------}
+procedure TdmMain.mbCollapseTreeClick(Sender: TObject);
+begin
+  case (fmMain.PageControl.ActivePageIndex) of
+    0: fmMain.vstSoftPkgContents.FullCollapse();
+    1: fmMain.vstToolsPkgContents.FullCollapse();
+  end;
+end;
+
+{------------------------------------------------------------------------------
+Процедура:  TdmMain.mbCollapseTreeClick()
+Назначение: Разворачивание дерева на активной вкладке главного окна
+------------------------------------------------------------------------------}
+procedure TdmMain.mbExpandTreeClick(Sender: TObject);
+begin
+  case (fmMain.PageControl.ActivePageIndex) of
+    0: fmMain.vstSoftPkgContents.FullExpand();
+    1: fmMain.vstToolsPkgContents.FullExpand();
+  end;
+end;
                     
 {------------------------------------------------------------------------------
-Процедура:     TdmMain.PreparePackages()
-Назначение:    Подготовка директорий
+Процедура:  TdmMain.PreparePackages()
+Назначение: Подготовка директорий
 ------------------------------------------------------------------------------}
 procedure TdmMain.PrepareDirs();
 begin
@@ -99,8 +127,8 @@ begin
 end;
        
 {------------------------------------------------------------------------------
-Процедура:     TdmMain.PreparePackages()
-Назначение:    Подготовка списков пакетов
+Процедура:  TdmMain.PreparePackages()
+Назначение: Подготовка списков пакетов
 ------------------------------------------------------------------------------}
 procedure TdmMain.PreparePackages();
 begin
