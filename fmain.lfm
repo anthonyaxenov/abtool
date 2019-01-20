@@ -1,7 +1,7 @@
 object fmMain: TfmMain
-  Left = 430
+  Left = 301
   Height = 450
-  Top = 108
+  Top = 85
   Width = 350
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'ABTool'
@@ -3222,10 +3222,10 @@ object fmMain: TfmMain
     Width = 350
     ActivePage = tabSoft
     Align = alClient
-    Images = dmMain.imgIcons
     TabHeight = 20
     TabIndex = 0
     TabOrder = 0
+    TabWidth = 86
     OnChange = PageControlChange
     object tabSoft: TTabSheet
       Caption = 'Установка'
@@ -3234,8 +3234,8 @@ object fmMain: TfmMain
       ImageIndex = 104
       object vstSoftPkgContents: TVirtualStringTree
         Left = 0
-        Height = 297
-        Top = 64
+        Height = 299
+        Top = 62
         Width = 342
         Align = alClient
         BorderSpacing.Bottom = 3
@@ -3255,18 +3255,18 @@ object fmMain: TfmMain
       end
       object pnSoftTop: TPanel
         Left = 0
-        Height = 25
+        Height = 23
         Top = 0
         Width = 342
         Align = alTop
         AutoSize = True
         BevelOuter = bvNone
-        ClientHeight = 25
+        ClientHeight = 23
         ClientWidth = 342
         TabOrder = 1
         object cmbSoftPkgSelect: TComboBox
           Left = 0
-          Height = 23
+          Height = 21
           Top = 2
           Width = 289
           Align = alClient
@@ -3280,7 +3280,7 @@ object fmMain: TfmMain
         end
         object btnSoftPkgEdit: TSpeedButton
           Left = 316
-          Height = 25
+          Height = 23
           Hint = 'Редактировать пакет'
           Top = 0
           Width = 26
@@ -3326,7 +3326,7 @@ object fmMain: TfmMain
         end
         object btnSoftPkgReload: TSpeedButton
           Left = 290
-          Height = 25
+          Height = 23
           Hint = 'Перезагрузить пакет'
           Top = 0
           Width = 26
@@ -3373,7 +3373,7 @@ object fmMain: TfmMain
       object labSoftPkgDescription: TLabel
         Left = 0
         Height = 13
-        Top = 48
+        Top = 46
         Width = 342
         Align = alTop
         BorderSpacing.Bottom = 3
@@ -3384,7 +3384,7 @@ object fmMain: TfmMain
       object edSoftSearch: TEdit
         Left = 0
         Height = 13
-        Top = 30
+        Top = 28
         Width = 342
         Align = alTop
         BorderSpacing.Top = 5
@@ -3417,7 +3417,7 @@ object fmMain: TfmMain
       object edToolsSearch: TEdit
         Left = 0
         Height = 13
-        Top = 30
+        Top = 28
         Width = 342
         Align = alTop
         BorderSpacing.Top = 5
@@ -3428,18 +3428,18 @@ object fmMain: TfmMain
       end
       object pnToolsTop: TPanel
         Left = 0
-        Height = 25
+        Height = 23
         Top = 0
         Width = 342
         Align = alTop
         AutoSize = True
         BevelOuter = bvNone
-        ClientHeight = 25
+        ClientHeight = 23
         ClientWidth = 342
         TabOrder = 1
         object cmbToolsPkgSelect: TComboBox
           Left = 0
-          Height = 23
+          Height = 21
           Top = 2
           Width = 289
           Align = alClient
@@ -3453,7 +3453,7 @@ object fmMain: TfmMain
         end
         object btnToolsPkgEdit: TSpeedButton
           Left = 316
-          Height = 25
+          Height = 23
           Hint = 'Редактировать пакет'
           Top = 0
           Width = 26
@@ -3499,7 +3499,7 @@ object fmMain: TfmMain
         end
         object btnToolsPkgReload: TSpeedButton
           Left = 290
-          Height = 25
+          Height = 23
           Hint = 'Перезагрузить пакет'
           Top = 0
           Width = 26
@@ -3561,7 +3561,7 @@ object fmMain: TfmMain
       object labToolsPkgDescription: TLabel
         Left = 0
         Height = 13
-        Top = 48
+        Top = 46
         Width = 342
         Align = alTop
         AutoSize = False
@@ -3572,8 +3572,8 @@ object fmMain: TfmMain
       end
       object vstToolsPkgContents: TVirtualStringTree
         Left = 0
-        Height = 303
-        Top = 64
+        Height = 305
+        Top = 62
         Width = 342
         Align = alClient
         BorderSpacing.Bottom = 3

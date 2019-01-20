@@ -13,6 +13,7 @@ type
 
   TdmMain = class(TDataModule)
     imgIcons: TImageList;
+    mbRefresh: TMenuItem;
     mmMain: TMainMenu;
     mbInstallCheckAll: TMenuItem;
     mbInstallExpandTree: TMenuItem;
@@ -39,6 +40,7 @@ type
     procedure mbCheckNoneClick(Sender: TObject);
     procedure mbCollapseTreeClick(Sender: TObject);
     procedure mbExpandTreeClick(Sender: TObject);
+    procedure mbRefreshClick(Sender: TObject);
   private
     // Подготовка директорий
     procedure PrepareDirs(); 
@@ -168,6 +170,18 @@ begin
   case (fmMain.PageControl.ActivePageIndex) of
     0: fmMain.vstSoftPkgContents.FullExpand();
     1: fmMain.vstToolsPkgContents.FullExpand();
+  end;
+end;
+
+{------------------------------------------------------------------------------
+Процедура:  TdmMain.mbRefreshClick()
+Назначение: Обновление списка пакетов и дерева на активной вкладке главного окна
+------------------------------------------------------------------------------}
+procedure TdmMain.mbRefreshClick(Sender: TObject);
+begin
+  case (fmMain.PageControl.ActivePageIndex) of
+    0: fmMain.btnSoftPkgReload.Click;
+    1: fmMain.btnToolsPkgReload.Click;
   end;
 end;
                     

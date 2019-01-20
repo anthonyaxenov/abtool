@@ -3628,6 +3628,7 @@ object dmMain: TdmMain
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
         ImageIndex = 21
+        ShortCut = 24614
         OnClick = mbCollapseTreeClick
       end
       object mbExpandTree: TMenuItem
@@ -3669,7 +3670,14 @@ object dmMain: TdmMain
           FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
         }
         ImageIndex = 22
+        ShortCut = 24616
         OnClick = mbExpandTreeClick
+      end
+      object mbRefresh: TMenuItem
+        Caption = 'Обновить'
+        ImageIndex = 16
+        ShortCut = 16466
+        OnClick = mbRefreshClick
       end
     end
     object mbCheck: TMenuItem
