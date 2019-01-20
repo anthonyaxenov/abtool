@@ -10,9 +10,18 @@ Homepage: [abtool.ru](http://abtool.ru/)
 
 Online help (only Russian for now, sorry): [abtool.ru/onlinehelp](http://abtool.ru/onlinehelp/)
 
+## Requirements for development environment
+
+* Windows OS (because ABTool is windows-only software)
+* [Lazarus 1.8.4](https://www.lazarus-ide.org/) and newer
+* [LCLextensions 0.6.1](/dependencies/lclextensions-0.6.1.zip) and newer
+* [VirtualTreeView 5.5.3-R1](/dependencies/virtualtreeview-5.5.3-R1.zip) and newer
+
+Porting to Delphi is welcome. You can create your fork of this repository for these purposes.
+
 ## License
 
-This software is licensed under **The MIT License** (read [LICENSE](LICENSE) file).
+This software is licensed under **[The MIT License](LICENSE)**.
 
 This means that you can use, distribute, sell and change the program as you want, under the following conditions:
 * explicit indication of my authorship of the original project;
@@ -42,6 +51,15 @@ So, I'd like to thank everybody listed and not listed here who made or keeps mak
 Сайт: [abtool.ru](http://abtool.ru/)
 
 Онлайн справка: [abtool.ru/onlinehelp](http://abtool.ru/onlinehelp/)
+
+## Требования к среде разработки
+
+* Windows OS (потому что ABTool предназначена только для Windows)
+* [Lazarus 1.8.4](https://www.lazarus-ide.org/) и новее
+* [LCLextensions 0.6.1](/dependencies/lclextensions-0.6.1.zip) и новее
+* [VirtualTreeView 5.5.3-R1](/dependencies/virtualtreeview-5.5.3-R1.zip) и новее
+
+Приветствуется портирование под Delphi. Можете создать свой форк этого репозитория для этих целей.
 
 ## Лицензия
 

@@ -1,7 +1,7 @@
 object fmMain: TfmMain
-  Left = 304
+  Left = 299
   Height = 450
-  Top = 87
+  Top = 82
   Width = 350
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'ABTool'
@@ -3220,11 +3220,11 @@ object fmMain: TfmMain
     Height = 430
     Top = 0
     Width = 350
-    ActivePage = tabTools
+    ActivePage = tabSoft
     Align = alClient
     Images = dmMain.imgIcons
     TabHeight = 20
-    TabIndex = 1
+    TabIndex = 0
     TabOrder = 0
     object tabSoft: TTabSheet
       Caption = 'Установка'
@@ -3239,13 +3239,18 @@ object fmMain: TfmMain
         Align = alClient
         BorderSpacing.Bottom = 3
         BorderStyle = bsNone
-        CheckImageKind = ckDarkCheck
-        DefaultText = 'Node'
-        Header.AutoSizeIndex = 0
+        DefaultText = 'Программа'
+        DragOperations = []
+        Header.AutoSizeIndex = -1
         Header.Columns = <>
         Header.MainColumn = -1
+        IncrementalSearch = isVisibleOnly
+        IncrementalSearchStart = ssAlwaysStartOver
         TabOrder = 0
+        TreeOptions.AutoOptions = [toAutoDropExpand, toAutoExpand, toAutoScrollOnExpand, toAutoSort, toAutoTristateTracking, toAutoDeleteMovedNodes, toAutoChangeScale]
         TreeOptions.MiscOptions = [toAcceptOLEDrop, toCheckSupport, toFullRepaintOnResize, toInitOnSave, toToggleOnDblClick, toWheelPanning, toEditOnClick]
+        OnGetText = vstSoftPkgContentsGetText
+        OnInitNode = vstSoftPkgContentsInitNode
       end
       object pnSoftTop: TPanel
         Left = 0
@@ -3268,6 +3273,7 @@ object fmMain: TfmMain
           BorderSpacing.Top = 2
           BorderSpacing.Right = 1
           ItemHeight = 13
+          OnChange = cmbSoftPkgSelectChange
           Style = csDropDownList
           TabOrder = 0
         end
@@ -3440,6 +3446,7 @@ object fmMain: TfmMain
           BorderSpacing.Top = 2
           BorderSpacing.Right = 1
           ItemHeight = 13
+          OnChange = cmbToolsPkgSelectChange
           Style = csDropDownList
           TabOrder = 0
         end
@@ -3564,20 +3571,22 @@ object fmMain: TfmMain
       end
       object vstToolsPkgContents: TVirtualStringTree
         Left = 0
-        Height = 306
+        Height = 303
         Top = 64
         Width = 342
         Align = alClient
+        BorderSpacing.Bottom = 3
         BorderStyle = bsNone
-        CheckImageKind = ckDarkCheck
-        DefaultText = 'Node'
+        DefaultText = 'Утилита'
         DragOperations = []
-        Header.AutoSizeIndex = 0
+        Header.AutoSizeIndex = -1
         Header.Columns = <>
         Header.MainColumn = -1
+        IncrementalSearch = isVisibleOnly
+        IncrementalSearchStart = ssAlwaysStartOver
         TabOrder = 3
-        TreeOptions.MiscOptions = [toAcceptOLEDrop, toFullRepaintOnResize, toInitOnSave, toToggleOnDblClick, toWheelPanning, toReadOnly, toEditOnClick]
-        TreeOptions.SelectionOptions = [toAlwaysSelectNode]
+        TreeOptions.AutoOptions = [toAutoDropExpand, toAutoExpand, toAutoScrollOnExpand, toAutoSort, toAutoTristateTracking, toAutoDeleteMovedNodes, toAutoChangeScale]
+        OnGetText = vstToolsPkgContentsGetText
       end
     end
     object tabSystem: TTabSheet
