@@ -5,16 +5,19 @@ unit uFileUtils;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Types, uPackage;
+  Classes, SysUtils, FileUtil, uPackage;
 
 // Получение списка файлов в директории
-function GetFileList(Path, FileMask: String; FullPaths: Boolean = True): TStringList;
+function GetFileList(APath, AFileMask: String; AFullPaths: Boolean = True): TStringList;
 
-// Получение списка всех файлов внутри директории ABTool\
-function GetABToolFileList(SubDir, FileMask: String; FullPaths: Boolean = True): TStringList;
+// Получение списка всех файлов внутри директории ABTool
+function GetABToolFileList(ASubDir, AFileMask: String; AFullPaths: Boolean = True): TStringList;
 
 // Получение списка всех файлов пакетов
-function GetPackagesIniFileList(PackageType: TPackageType; FullPaths: Boolean = True): TStringList;
+function GetPackagesIniFileList(APackageType: TPackageType; AFullPaths: Boolean = True): TStringList;
+
+// Получение списка всех файлов локализаций
+function GetLocalesIniFileList(AFullPaths: Boolean = True): TStringList;
 
 implementation
 
@@ -22,27 +25,27 @@ implementation
 Функция: GetFileList
 Назначение: Получение списка файлов в директории
 Вх. параметры:
-  Path: string - путь к директории, список файлов которой нужно получить
-  FileMask: string - маска файлов, по которой нужно отфильтровать список файлов
-  FullPaths: boolean - возвращать полные пути (true) или только имена
+  APath: string - путь к директории, список файлов которой нужно получить
+  AFileMask: string - маска файлов, по которой нужно отфильтровать список файлов
+  AFullPaths: boolean - возвращать полные пути (true) или только имена
     файлов (false). По умолчанию true.
 Возвращает:
   TStringList - список строк с полными путями или только с именами файлов
 ------------------------------------------------------------------------------}
-function GetFileList(Path, FileMask: String; FullPaths: Boolean = True): TStringList;
+function GetFileList(APath, AFileMask: String; AFullPaths: Boolean = True): TStringList;
 var
   SearchRec: TSearchRec;
   ResultLines: TStringList;
 begin
   ResultLines := TStringList.Create;
-  Path := IncludeTrailingPathDelimiter(Path);
-  if FindFirst(Path + FileMask, faNormal, SearchRec) = 0 then
+  APath := IncludeTrailingPathDelimiter(APath);
+  if FindFirst(APath + AFileMask, faNormal, SearchRec) = 0 then
   begin
     repeat
       if (SearchRec.Attr <> faDirectory) then
       begin
-        if FullPaths then
-          ResultLines.Add(Path + SearchRec.Name)
+        if AFullPaths then
+          ResultLines.Add(APath + SearchRec.Name)
         else
           ResultLines.Add(SearchRec.Name);
       end;
@@ -56,37 +59,53 @@ end;
 Функция: GetABToolFileList
 Назначение: Получение списка всех файлов внутри директории ABTool\
 Вх. параметры:
-  SubDir: string - имя директории внутри ABTool\
-  FileMask: string - маска файлов, по которой нужно отфильтровать список файлов
-  FullPaths: boolean - возвращать полные пути (true) или только имена
+  ASubDir: string - имя директории внутри ABTool\
+  AFileMask: string - маска файлов, по которой нужно отфильтровать список файлов
+  AFullPaths: boolean - возвращать полные пути (true) или только имена
     файлов (false). По умолчанию true.
 Возвращает:
   TStringList - список строк с полными путями или только с именами файлов пакетов
 ------------------------------------------------------------------------------}
-function GetABToolFileList(SubDir, FileMask: String; FullPaths: Boolean = True): TStringList;
+function GetABToolFileList(ASubDir, AFileMask: String; AFullPaths: Boolean = True): TStringList;
 begin
-  Result := GetFileList(ExtractFilePath(ParamStr(0)) + 'ABTool\' + SubDir, FileMask, FullPaths);
+  Result := GetFileList(ExtractFilePath(ParamStr(0)) + 'ABTool\' + ASubDir, AFileMask, AFullPaths);
 end;
 
 {------------------------------------------------------------------------------
 Функция: GetPackagesIniFileList
-Назначение: Получение спискавсех файлов пакетов
+Назначение: Получение списка всех файлов пакетов
 Вх. параметры:
-  PackageType: TPackageType - тип пакета: ptSoft либо ptTools
-  FullPaths: boolean - возвращать полные пути (true) или только имена
+  APackageType: TPackageType - тип пакета: ptSoft либо ptTools
+  AFullPaths: boolean - возвращать полные пути (true) или только имена
+    файлов (false). По умолчанию true.
+Возвращает:
+  TStringList - список строк с полными путями или только с именами файлов пакетов
+Исключения:
+  TException - при попытке передать любой другой тип пакета
+------------------------------------------------------------------------------}
+function GetPackagesIniFileList(APackageType: TPackageType; AFullPaths: Boolean = True): TStringList;
+begin
+  case (APackageType) of
+    ptSoft: Result := GetABToolFileList('Packages', 'soft.*.ini', AFullPaths);
+    ptTools: Result := GetABToolFileList('Packages', 'tools.*.ini', AFullPaths);
+    else raise Exception.Create('GetPackagesIniFileList(): передан неверный тип пакета');
+  end;
+end;
+  
+{------------------------------------------------------------------------------
+Функция: GetPackagesIniFileList
+Назначение: Получение списка всех файлов локализаций
+Вх. параметры:
+  AFullPaths: boolean - возвращать полные пути (true) или только имена
     файлов (false). По умолчанию true.
 Возвращает:
   TStringList - список строк с полными путями или только с именами файлов пакетов
 Исключения:
   TException - при попытке передать ptUnknown
 ------------------------------------------------------------------------------}
-function GetPackagesIniFileList(PackageType: TPackageType; FullPaths: Boolean = True): TStringList;
+function GetLocalesIniFileList(AFullPaths: Boolean = True): TStringList;
 begin
-  case (PackageType) of
-    ptSoft: Result := GetABToolFileList('Packages', 'soft.*.ini', FullPaths);
-    ptTools: Result := GetABToolFileList('Packages', 'tools.*.ini', FullPaths);
-    ptUnknown: raise Exception.Create('GetPackagesIniFileList(): передан ptUnknown');
-  end;
+  Result := GetABToolFileList('Languages', '*.lng', AFullPaths);
 end;
 
 end.

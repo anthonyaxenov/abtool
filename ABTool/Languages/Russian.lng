@@ -1,0 +1,185 @@
+; Author:	AnthonyAxenov, anthonysoprano.93@gmail.com, abtool.ru
+; Date:		20:11 20.05.2015
+[Info]
+; Language name - required
+Name=Русский
+; ABTool version — required
+ABToolVer=0.8.0
+
+[Main]
+; Bidirectional mode:
+; = 1   - Left to right
+; = 2   - Right to left with right alignment
+; = 3   - Right to left with left alignment
+; = 4   - Right to left with right alignment only for reading (not typing)
+Bidi=2
+
+[SplashForm]
+;
+;	Splash form
+;
+SplashForm_Lab_Loading=Загрузка...
+[MainForm]
+;
+;	Main form
+;
+;Tabs
+MainForm_Tab_Soft=Программы
+MainForm_Tab_Tools=Утилиты
+MainForm_Tab_System=Система
+; Deprecated since v0.8.0.313 (19:01 19.05.2015)
+;MainForm_Tab_SysInfo=Общая информация 
+; Deprecated since v0.8.0.313 (19:01 19.05.2015)
+;MainForm_Tab_SysCare=Обслуживание
+MainForm_Tab_Log=Лог
+
+;Common buttons on toolbars
+MainForm_Btn_List=Список
+MainForm_Mnb_ExpandAll=Развернуть все
+MainForm_Mnb_CollapseAll=Свернуть все
+MainForm_Btn_Search=Поиск
+MainForm_Mnb_PackDefault=По умолчанию
+MainForm_Mnb_PacksEdit=Управление пакетами...
+
+;"Programms" tab
+MainForm_Btn_SoftCheck=Выбор
+MainForm_Mnb_SoftCheckAll=Выбрать все
+MainForm_Mnb_SoftCheckNone=Снять выбор
+MainForm_Btn_SoftPackages=Пакеты программ
+MainForm_Btn_SoftStart=<<<  Приступить к установке  >>>
+
+;"Utilities" tab
+MainForm_Btn_ToolsPackages=Пакеты утилит
+
+;"System" tab
+MainForm_Lab_System=Система
+MainForm_SInfo_RowOSVer=Версия ОС
+MainForm_SInfo_RowPCName=Имя ПК
+MainForm_SInfo_RowUserName=Имя пользователя
+MainForm_Lab_UserVars=Переменные среды для
+MainForm_Vars_Col1=Переменная
+MainForm_Vars_Col2=Значение
+MainForm_Lab_SysVars=Системные переменные среды
+MainForm_Btn_SysInfoRefresh=Обновить
+MainForm_Btn_VarsEdit=Редактирование...
+MainForm_Mnb_CopyVarValue=Копировать значение
+MainForm_Mnb_CopyVarLine=Копировать строку
+MainForm_Mnb_CopyVarAll=Копировать все
+MainForm_Grp_Power=Питание компьютера
+MainForm_Btn_PowerOff=Выключение
+MainForm_Btn_Reboot=Перезагрузка
+
+;"Log" tab
+MainForm_Btn_LogClear=Очистить лог
+MainForm_Btn_LogSave=Сохранить...
+
+;Other strings in this window
+MainForm_Btn_Options=Настройки
+
+[OptionsForm]
+;
+;	Options form
+;   
+;Tabs
+OptForm_Tab_Common=Общие
+OptForm_Tab_Interface=Интерфейс
+OptForm_Tab_Packages=Пакеты
+OptForm_Tab_About=О программе
+
+;"Common" tab
+;	"OptForm_Grp_Lang / Language"
+OptForm_Grp_Lang=Язык
+OptForm_Lab_LangFileIs=Файл:
+OptForm_Lab_LangNameIs=Язык:
+OptForm_Lab_LangVerIs=Версия:
+OptForm_Grp_Soft=Вкладка «Программы»
+OptForm_Chb_ChkExitCodes=Немедленно сообщать о коде возврата <> 0
+OptForm_Chb_ChkExitCodesHint=В случае завершения инсталлятора с кодом, отличным от нуля, вам предлагается прервать процесс установки программ
+OptForm_Chb_DntUnChkItems=Не снимать отметку с чекбокса при коде возврата <> 0
+OptForm_Chb_DntUnChkItemsHint=В последующем вы можете попробовать установить только те программы, установка которых не была завершена корректно
+OptForm_Chb_ColorSoftTree=Раскрашивать список программ после установки
+OptForm_Chb_ColorSoftTreeHint=После завершения процесса установки список программ будет раскрашен так: ошибка запуска — красный, код возврата <> 0 — синий
+OptForm_Chb_ShowProgress=Отображать общий ход установки программ
+OptForm_Chb_ShowProgressHint=Во время установки главное окно скроется и появится другое, с отображением общего хода установки. Иначе — главное окно не исчезнет, но заблокируется
+OptForm_Chb_ExpandSoft=Раскрывать список программ после загрузки пакета
+OptForm_Chb_ExpandSoftHint=
+OptForm_Chb_QuietREG=Тихий импорт REG-файлов
+OptForm_Chb_QuietREGHint=Когда до него дойдёт очередь, данные будут внесены без подтверждений
+OptForm_Grp_Tools=Вкладка «Утилиты»
+OptForm_Chb_HideOnTool=Скрыть главное окно ABTool при запуске утилиты
+OptForm_Chb_HideOnToolHint=После запуска утилиты окно ABTool не будет мешать
+OptForm_Chb_ExpandTools=Раскрывать список утилит после загрузки пакета 
+OptForm_Chb_ExpandToolsHint=
+;	"OptForm_Url_DownloadLangs / Download other languages"
+OptForm_Url_DownloadLangs=Скачать другие языки
+
+;"Interface" tab
+OptForm_Chb_ShowLog=Показывать лог событий
+OptForm_Chb_ShowLogHint=Лог выводится на дополнительную вкладку и содержит полный протокол событий
+OptForm_Chb_DrawOutlines=Показывать линии при отрисовке списков
+OptForm_Chb_DrawOutlinesHint=
+OptForm_Chb_ScreenSnap=Прилипание окон к краям экрана
+OptForm_Chb_ScreenSnapHint=
+OptForm_Chb_OnTop=Поверх всех окон
+OptForm_Chb_OnTopHint=
+OptForm_Chb_ShowPkgDesc=Показывать описания пакетов
+OptForm_Chb_ShowPkgDescHint=Действует как на вкладке установки, так и на вкладке утилит
+OptForm_Chb_SrchVisible=Строка поиска всегда видна
+OptForm_Chb_SrchVisibleHint=Действует как на вкладке установки, так и на вкладке утилит
+OptForm_Chb_ScrollLog=Всегда прокручивать лог до конца
+OptForm_Chb_ScrollLogHint=
+OptForm_Grp_PkgSwitchMethod=Переключение между пакетами
+OptForm_Rdb_PkgSwByMenu=Через меню над списками
+OptForm_Rdb_PkgSwByMenuHint=Действует как на вкладке установки, так и на вкладке утилит
+OptForm_Rdb_PkgSwByTabs=Отображать в виде закладок:
+OptForm_Rdb_PkgSwByTabsHint=Действует как на вкладке установки, так и на вкладке утилит
+OptForm_Chb_PkgSwShrinkTabs=Вмещать все (длинные названия будут укорочены)
+OptForm_Chb_PkgSwShrinkTabsHint=Если выключено, все названия могут не поместиться в ширину панели закладок
+OptForm_Cmb_PkgSwTabsPosHint=Выберите положение панели закладок
+OptForm_Cmb_PkgSwTabsPosTop=Сверху
+OptForm_Cmb_PkgSwTabsPosBottom=Снизу
+OptForm_Cmb_PkgSwTabsPosLeft=Слева
+OptForm_Cmb_PkgSwTabsPosRight=Справа
+
+;"Packages" tab
+OptForm_Grp_PkgSoft=Программы
+OptForm_Grp_PkgTools=Утилиты
+OptForm_Btn_BrowseUserSoftPkg=Выбор
+OptForm_Btn_BrowseUserSoftPkgHint=Выбрать пользовательский пакет в отдельном окне
+OptForm_Btn_ClearUserSoftPkgHint=Очистить поле
+OptForm_Btn_OpenIniDir=Открыть папку ABTool_ini
+OptForm_Btn_OpenIniDirHint=
+OptForm_Grp_PkgInfo=Информация о пакете
+OptForm_Lab_PkgNameIs=Название:
+OptForm_Lab_PkgDescIs=Описание:
+
+;"About" tab
+OptForm_Lab_ABToolBuildIs=сборка
+OptForm_Lab_WhatsNew=Что нового в этой версии:
+OptForm_Url_ReportBug=Сообщить об ошибке
+OptForm_Url_Help=Помощь
+OptForm_Btn_CheckUpdates=Проверить обновления
+OptForm_Btn_CheckingUpdates=ПОлучение информации...
+
+;Other strings in this window
+OptForm_Caption=Настройки ABTool
+OptForm_Btn_ResetOptions=Сброс
+OptForm_Btn_SaveOptions=Сохранить
+OptForm_Btn_Close=Закрыть
+
+[ProgressForm]
+;
+;	Installation progress form
+;
+[ChoosePkgForm]
+;
+;	Form to choose package
+;
+[Messages]
+;
+;	Messages to show
+;
+[Log]
+;
+;	Log messages
+;

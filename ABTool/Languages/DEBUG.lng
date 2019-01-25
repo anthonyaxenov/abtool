@@ -1,0 +1,187 @@
+; Author:	AnthonyAxenov, anthonysoprano.93@gmail.com, abtool.ru
+; Date:		20:11 20.05.2015
+[Info]
+; Language name - required
+Name=DEBUG
+; ABTool version — required
+ABToolVer=0.8.0
+
+[Main]
+; Bidirectional mode:
+; = 1   - Left to right
+; = 2   - Right to left with right alignment
+; = 3   - Right to left with left alignment
+; = 4   - Right to left with right alignment only for reading (not typing)
+Bidi=1
+
+[SplashForm]
+;
+;	Splash form
+;
+SplashForm_Lab_Loading=SplashForm_Lab_Loading
+
+[MainForm]
+;
+;	Main form
+;
+;Tabs
+MainForm_Tab_Soft=MainForm_Tab_Soft
+MainForm_Tab_Tools=MainForm_Tab_Tools
+MainForm_Tab_System=MainForm_Tab_System
+; Deprecated since v0.8.0.313 (19:01 19.05.2015)
+;MainForm_Tab_SysInfo=MainForm_Tab_SysInfo
+; Deprecated since v0.8.0.313 (19:01 19.05.2015)
+;MainForm_Tab_SysCare=MainForm_Tab_SysCare
+MainForm_Tab_Log=MainForm_Tab_Log
+
+;Common buttons on toolbars
+MainForm_Btn_List=MainForm_Btn_List
+MainForm_Mnb_ExpandAll=MainForm_Mnb_ExpandAll
+MainForm_Mnb_CollapseAll=MainForm_Mnb_CollapseAll
+MainForm_Btn_Search=MainForm_Btn_Search
+MainForm_Mnb_PackDefault=MainForm_Mnb_PackDefault
+MainForm_Mnb_PacksEdit=MainForm_Mnb_PacksEdit
+
+;"Programms" tab
+MainForm_Btn_SoftCheck=MainForm_Btn_SoftCheck
+MainForm_Mnb_SoftCheckAll=MainForm_Mnb_SoftCheckAll
+MainForm_Mnb_SoftCheckNone=MainForm_Mnb_SoftCheckNone
+MainForm_Btn_SoftPackages=MainForm_Btn_SoftPackages
+MainForm_Btn_SoftStart=MainForm_Btn_SoftStart
+
+;"Utilities" tab
+MainForm_Btn_ToolsPackages=MainForm_Btn_ToolsPackages
+
+;"System" tab
+MainForm_Lab_System=MainForm_Lab_System
+MainForm_SInfo_RowOSVer=MainForm_SInfo_RowPCName
+MainForm_SInfo_RowPCName=MainForm_SInfo_RowPCName
+MainForm_SInfo_RowUserName=MainForm_SInfo_RowUserName
+MainForm_Lab_UserVars=MainForm_Lab_UserVars
+MainForm_Vars_Col1=MainForm_Vars_Col1
+MainForm_Vars_Col2=MainForm_Vars_Col2
+MainForm_Lab_SysVars=MainForm_Lab_SysVars
+MainForm_Btn_SysInfoRefresh=MainForm_Btn_SysInfoRefresh
+MainForm_Btn_VarsEdit=MainForm_Btn_VarsEdit
+MainForm_Mnb_CopyVarValue=MainForm_Mnb_CopyVarValue
+MainForm_Mnb_CopyVarLine=MainForm_Mnb_CopyVarLine
+MainForm_Mnb_CopyVarAll=MainForm_Mnb_CopyVarAll
+MainForm_Grp_Power=MainForm_Grp_Power
+MainForm_Btn_PowerOff=MainForm_Btn_PowerOff
+MainForm_Btn_Reboot=MainForm_Btn_Reboot
+
+;"Log" tab
+MainForm_Btn_LogClear=MainForm_Btn_LogClear
+MainForm_Btn_LogSave=MainForm_Btn_LogSave
+
+;Other strings in this window
+;MainForm_Caption=ABTool Debugging
+MainForm_Btn_Options=MainForm_Btn_Options
+
+[OptionsForm]
+;
+;	Options form
+;   
+;Tabs
+OptForm_Tab_Common=OptForm_Tab_Common
+OptForm_Tab_Interface=OptForm_Tab_Interface
+OptForm_Tab_Packages=OptForm_Tab_Packages
+OptForm_Tab_About=OptForm_Tab_About
+
+;"Common" tab
+;	"OptForm_Grp_Lang / Language"
+OptForm_Grp_Lang=OptForm_Grp_Lang
+OptForm_Lab_LangFileIs=OptForm_Lab_LangFileIs
+OptForm_Lab_LangNameIs=OptForm_Lab_LangNameIs
+OptForm_Lab_LangVerIs=OptForm_Lab_LangVerIs
+OptForm_Grp_Soft=OptForm_Grp_Soft
+OptForm_Chb_ChkExitCodes=OptForm_Chb_ChkExitCodes
+OptForm_Chb_ChkExitCodesHint=OptForm_Chb_ChkExitCodesHint
+OptForm_Chb_DntUnChkItems=OptForm_Chb_DntUnChkItems
+OptForm_Chb_DntUnChkItemsHint=OptForm_Chb_DntUnChkItemsHint
+OptForm_Chb_ColorSoftTree=OptForm_Chb_ColorSoftTree
+OptForm_Chb_ColorSoftTreeHint=OptForm_Chb_ColorSoftTreeHint
+OptForm_Chb_ShowProgress=OptForm_Chb_ShowProgress
+OptForm_Chb_ShowProgressHint=OptForm_Chb_ShowProgressHint
+OptForm_Chb_ExpandSoft=OptForm_Chb_ExpandSoft
+OptForm_Chb_ExpandSoftHint=OptForm_Chb_ExpandSoftHint
+OptForm_Chb_QuietREG=OptForm_Chb_QuietREG
+OptForm_Chb_QuietREGHint=OptForm_Chb_QuietREGHint
+OptForm_Grp_Tools=OptForm_Grp_Tools
+OptForm_Chb_HideOnTool=OptForm_Chb_HideOnTool
+OptForm_Chb_HideOnToolHint=OptForm_Chb_HideOnToolHint
+OptForm_Chb_ExpandTools=OptForm_Chb_ExpandTools
+OptForm_Chb_ExpandToolsHint=OptForm_Chb_ExpandToolsHint
+;	"OptForm_Url_DownloadLangs / Download other languages"
+OptForm_Url_DownloadLangs=OptForm_Url_DownloadLangs
+
+;"Interface" tab
+OptForm_Chb_ShowLog=OptForm_Chb_ShowLog
+OptForm_Chb_ShowLogHint=OptForm_Chb_ShowLogHint
+OptForm_Chb_DrawOutlines=OptForm_Chb_DrawOutlines
+OptForm_Chb_DrawOutlinesHint=OptForm_Chb_DrawOutlinesHint
+OptForm_Chb_ScreenSnap=OptForm_Chb_ScreenSnap
+OptForm_Chb_ScreenSnapHint=OptForm_Chb_ScreenSnapHint
+OptForm_Chb_OnTop=OptForm_Chb_OnTop
+OptForm_Chb_OnTopHint=OptForm_Chb_OnTopHint
+OptForm_Chb_ShowPkgDesc=OptForm_Chb_ShowPkgDesc
+OptForm_Chb_ShowPkgDescHint=OptForm_Chb_ShowPkgDescHint
+OptForm_Chb_SrchVisible=OptForm_Chb_SrchVisible
+OptForm_Chb_SrchVisibleHint=OptForm_Chb_SrchVisibleHint
+OptForm_Chb_ScrollLog=OptForm_Chb_ScrollLog
+OptForm_Chb_ScrollLogHint=OptForm_Chb_ScrollLogHint
+OptForm_Grp_PkgSwitchMethod=OptForm_Grp_PkgSwitchMethod
+OptForm_Rdb_PkgSwByMenu=OptForm_Rdb_PkgSwByMenu
+OptForm_Rdb_PkgSwByMenuHint=OptForm_Rdb_PkgSwByMenuHint
+OptForm_Rdb_PkgSwByTabs=OptForm_Rdb_PkgSwByTabs
+OptForm_Rdb_PkgSwByTabsHint=OptForm_Rdb_PkgSwByTabsHint
+OptForm_Chb_PkgSwShrinkTabs=OptForm_Chb_PkgSwShrinkTabs
+OptForm_Chb_PkgSwShrinkTabsHint=OptForm_Chb_PkgSwShrinkTabsHint
+OptForm_Cmb_PkgSwTabsPosHint=OptForm_Cmb_PkgSwTabsPosHint
+OptForm_Cmb_PkgSwTabsPosTop=OptForm_Cmb_PkgSwTabsPosTop
+OptForm_Cmb_PkgSwTabsPosBottom=OptForm_Cmb_PkgSwTabsPosBottom
+OptForm_Cmb_PkgSwTabsPosLeft=OptForm_Cmb_PkgSwTabsPosLeft
+OptForm_Cmb_PkgSwTabsPosRight=OptForm_Cmb_PkgSwTabsPosRight
+
+;"Packages" tab
+OptForm_Grp_PkgSoft=OptForm_Grp_PkgSoft
+OptForm_Grp_PkgTools=OptForm_Grp_PkgTools
+OptForm_Btn_BrowseUserSoftPkg=OptForm_Btn_BrowseUserSoftPkg
+OptForm_Btn_BrowseUserSoftPkgHint=OptForm_Btn_BrowseUserSoftPkgHint
+OptForm_Btn_ClearUserSoftPkgHint=OptForm_Btn_ClearUserSoftPkgHint
+OptForm_Btn_OpenIniDir=OptForm_Btn_OpenIniDir
+OptForm_Btn_OpenIniDirHint=OptForm_Btn_OpenIniDirHint
+OptForm_Grp_PkgInfo=OptForm_Grp_PkgInfo
+OptForm_Lab_PkgNameIs=OptForm_Lab_PkgNameIs
+OptForm_Lab_PkgDescIs=OptForm_Lab_PkgDescIs
+
+;"About" tab
+OptForm_Lab_ABToolBuildIs=OptForm_Lab_ABToolBuildIs
+OptForm_Lab_WhatsNew=OptForm_Lab_WhatsNew
+OptForm_Url_ReportBug=OptForm_Url_ReportBug
+OptForm_Url_Help=OptForm_Url_Help
+OptForm_Btn_CheckUpdates=OptForm_Btn_CheckUpdates
+OptForm_Btn_CheckingUpdates=OptForm_Btn_CheckingUpdates
+
+;Other strings in this window
+OptForm_Caption=OptForm_Caption
+OptForm_Btn_ResetOptions=OptForm_Btn_ResetOptions
+OptForm_Btn_SaveOptions=OptForm_Btn_SaveOptions
+OptForm_Btn_Close=OptForm_Btn_Close
+
+[ProgressForm]
+;
+;	Installation progress form
+;
+[ChoosePkgForm]
+;
+;	Form to choose package
+;
+[Messages]
+;
+;	Messages to show
+;
+[Log]
+;
+;	Log messages
+;

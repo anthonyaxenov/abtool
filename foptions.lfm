@@ -1,7 +1,7 @@
 object fmOptions: TfmOptions
-  Left = 656
+  Left = 1451
   Height = 450
-  Top = 109
+  Top = 164
   Width = 350
   BorderIcons = [biSystemMenu]
   BorderStyle = bsDialog
@@ -3207,13 +3207,15 @@ object fmOptions: TfmOptions
     71FE000F5EFF000773FE000387FE800176FD80002DC38001693C0003D1190007
     36A3800F57F7800F8AFFC00F76FFC01F8BFFE03FBEFFF47FBDFF
   }
-  OnCreate = FormCreate
+  OnClose = FormClose
+  OnShow = FormShow
   Position = poMainFormCenter
+  ShowHint = True
   ShowInTaskBar = stNever
   LCLVersion = '1.8.4.0'
   object PageControl: TPageControl
     Left = 0
-    Height = 416
+    Height = 412
     Top = 0
     Width = 350
     ActivePage = tabCommon
@@ -3223,30 +3225,30 @@ object fmOptions: TfmOptions
     TabWidth = 86
     object tabCommon: TTabSheet
       Caption = 'Общие'
-      ClientHeight = 390
+      ClientHeight = 386
       ClientWidth = 342
       object grpOptInstall: TGroupBox
         Left = 5
-        Height = 171
-        Top = 131
+        Height = 159
+        Top = 149
         Width = 332
         Align = alTop
         BorderSpacing.Left = 5
         BorderSpacing.Top = 5
         BorderSpacing.Right = 5
         Caption = 'Вкладка «Установка»'
-        ClientHeight = 153
+        ClientHeight = 141
         ClientWidth = 328
         TabOrder = 0
         object cbChkExitCodes: TCheckBox
           Left = 5
           Height = 19
-          Top = 5
+          Top = 4
           Width = 318
           Align = alTop
           AutoSize = False
           BorderSpacing.Left = 5
-          BorderSpacing.Top = 5
+          BorderSpacing.Top = 4
           BorderSpacing.Right = 5
           Caption = 'Немедленно сообщать о коде возврата <> 0'
           TabOrder = 0
@@ -3254,12 +3256,12 @@ object fmOptions: TfmOptions
         object cbDntUnChkItems: TCheckBox
           Left = 5
           Height = 19
-          Top = 29
+          Top = 27
           Width = 318
           Align = alTop
           AutoSize = False
           BorderSpacing.Left = 5
-          BorderSpacing.Top = 5
+          BorderSpacing.Top = 4
           BorderSpacing.Right = 5
           Caption = 'Не снимать отметку с чекбокса при коде возврата <> 0'
           TabOrder = 1
@@ -3267,12 +3269,12 @@ object fmOptions: TfmOptions
         object cbShowProgress: TCheckBox
           Left = 5
           Height = 19
-          Top = 77
+          Top = 73
           Width = 318
           Align = alTop
           AutoSize = False
           BorderSpacing.Left = 5
-          BorderSpacing.Top = 5
+          BorderSpacing.Top = 4
           BorderSpacing.Right = 5
           Caption = 'Отображать общий ход установки программ'
           TabOrder = 2
@@ -3280,12 +3282,12 @@ object fmOptions: TfmOptions
         object cbColorSoftTree: TCheckBox
           Left = 5
           Height = 19
-          Top = 53
+          Top = 50
           Width = 318
           Align = alTop
           AutoSize = False
           BorderSpacing.Left = 5
-          BorderSpacing.Top = 5
+          BorderSpacing.Top = 4
           BorderSpacing.Right = 5
           Caption = 'Раскрашивать список программ после установки'
           TabOrder = 3
@@ -3293,12 +3295,12 @@ object fmOptions: TfmOptions
         object cbQuietREG: TCheckBox
           Left = 5
           Height = 19
-          Top = 101
+          Top = 96
           Width = 318
           Align = alTop
           AutoSize = False
           BorderSpacing.Left = 5
-          BorderSpacing.Top = 5
+          BorderSpacing.Top = 4
           BorderSpacing.Right = 5
           Caption = 'Тихий импорт REG-файлов'
           TabOrder = 4
@@ -3306,12 +3308,12 @@ object fmOptions: TfmOptions
         object cbExpandSoft: TCheckBox
           Left = 5
           Height = 19
-          Top = 125
+          Top = 119
           Width = 318
           Align = alTop
           AutoSize = False
           BorderSpacing.Left = 5
-          BorderSpacing.Top = 5
+          BorderSpacing.Top = 4
           BorderSpacing.Right = 5
           Caption = 'Раскрывать дерево после загрузки пакета'
           TabOrder = 5
@@ -3319,26 +3321,26 @@ object fmOptions: TfmOptions
       end
       object grpOptTools: TGroupBox
         Left = 5
-        Height = 73
-        Top = 307
+        Height = 67
+        Top = 313
         Width = 332
         Align = alTop
         BorderSpacing.Left = 5
         BorderSpacing.Top = 5
         BorderSpacing.Right = 5
         Caption = 'Вкладка «Утилиты»'
-        ClientHeight = 55
+        ClientHeight = 49
         ClientWidth = 328
         TabOrder = 1
         object cbHideOnTool: TCheckBox
           Left = 5
           Height = 19
-          Top = 5
+          Top = 4
           Width = 318
           Align = alTop
           AutoSize = False
           BorderSpacing.Left = 5
-          BorderSpacing.Top = 5
+          BorderSpacing.Top = 4
           BorderSpacing.Right = 5
           Caption = 'Скрывать главное окно при запуске утилит'
           TabOrder = 0
@@ -3346,12 +3348,12 @@ object fmOptions: TfmOptions
         object cbExpandTools: TCheckBox
           Left = 5
           Height = 19
-          Top = 29
+          Top = 27
           Width = 318
           Align = alTop
           AutoSize = False
           BorderSpacing.Left = 5
-          BorderSpacing.Top = 5
+          BorderSpacing.Top = 4
           BorderSpacing.Right = 5
           Caption = 'Раскрывать дерево после загрузки пакета'
           TabOrder = 1
@@ -3359,25 +3361,25 @@ object fmOptions: TfmOptions
       end
       object grpOptMainform: TGroupBox
         Left = 5
-        Height = 121
-        Top = 5
+        Height = 111
+        Top = 33
         Width = 332
         Align = alTop
         BorderSpacing.Left = 5
         BorderSpacing.Top = 5
         BorderSpacing.Right = 5
         Caption = 'Главное окно'
-        ClientHeight = 103
+        ClientHeight = 93
         ClientWidth = 328
         TabOrder = 2
         object cbOnTop: TCheckBox
           Left = 5
           Height = 19
-          Top = 77
+          Top = 73
           Width = 318
           Align = alTop
           BorderSpacing.Left = 5
-          BorderSpacing.Top = 5
+          BorderSpacing.Top = 4
           BorderSpacing.Right = 5
           Caption = 'Поверх всех окон'
           TabOrder = 0
@@ -3385,23 +3387,23 @@ object fmOptions: TfmOptions
         object cbDrawOutlines: TCheckBox
           Left = 5
           Height = 19
-          Top = 53
+          Top = 50
           Width = 318
           Align = alTop
           BorderSpacing.Left = 5
-          BorderSpacing.Top = 5
+          BorderSpacing.Top = 4
           BorderSpacing.Right = 5
-          Caption = 'Рисовать линии при отрисовке деревьев'
+          Caption = 'Рисовать в деревьях линии уровней вложенности'
           TabOrder = 1
         end
         object cbShowPkgDesc: TCheckBox
           Left = 5
           Height = 19
-          Top = 29
+          Top = 27
           Width = 318
           Align = alTop
           BorderSpacing.Left = 5
-          BorderSpacing.Top = 5
+          BorderSpacing.Top = 4
           BorderSpacing.Right = 5
           Caption = 'Показывать описания пакетов'
           TabOrder = 2
@@ -3409,14 +3411,43 @@ object fmOptions: TfmOptions
         object cbScreenSnap: TCheckBox
           Left = 5
           Height = 19
-          Top = 5
+          Top = 4
           Width = 318
           Align = alTop
           BorderSpacing.Left = 5
-          BorderSpacing.Top = 5
+          BorderSpacing.Top = 4
           BorderSpacing.Right = 5
           Caption = 'Прилипание к краям экрана'
           TabOrder = 3
+        end
+      end
+      object pnLanguage: TPanel
+        Left = 0
+        Height = 28
+        Top = 0
+        Width = 342
+        Align = alTop
+        BevelOuter = bvNone
+        ClientHeight = 28
+        ClientWidth = 342
+        TabOrder = 3
+        object cmbLanguage: TComboBox
+          Left = 108
+          Height = 21
+          Top = 4
+          Width = 230
+          Anchors = [akTop, akLeft, akRight]
+          ItemHeight = 13
+          Style = csDropDownList
+          TabOrder = 0
+        end
+        object Label1: TLabel
+          Left = 8
+          Height = 13
+          Top = 8
+          Width = 83
+          Caption = 'Язык / Language'
+          ParentColor = False
         end
       end
     end
@@ -3427,7 +3458,6 @@ object fmOptions: TfmOptions
       Caption = 'О программе'
       ClientHeight = 390
       ClientWidth = 342
-      OnContextPopup = tabAboutContextPopup
       object imgLogo: TImage
         Left = 147
         Height = 48
@@ -3720,18 +3750,18 @@ object fmOptions: TfmOptions
   end
   object btnClose: TButton
     Left = 272
-    Height = 25
-    Top = 420
+    Height = 29
+    Top = 416
     Width = 75
     Anchors = [akTop, akRight]
     Caption = 'Закрыть'
-    OnClick = btnCloseClick
+    ModalResult = 11
     TabOrder = 1
   end
   object btnSave: TButton
     Left = 109
-    Height = 25
-    Top = 420
+    Height = 29
+    Top = 416
     Width = 132
     Anchors = [akTop, akLeft, akRight]
     Caption = 'Сохранить'
@@ -3741,15 +3771,53 @@ object fmOptions: TfmOptions
     Font.Pitch = fpVariable
     Font.Quality = fqDraft
     Font.Style = [fsBold]
+    ModalResult = 1
+    OnClick = btnSaveClick
     ParentFont = False
     TabOrder = 2
   end
-  object btnSetDefault: TButton
-    Left = 4
-    Height = 25
-    Top = 420
-    Width = 75
-    Caption = 'Сброс'
-    TabOrder = 3
+  object btnSetDefault: TSpeedButton
+    Left = 8
+    Height = 24
+    Hint = 'Установить настройки по умолчанию'
+    Top = 418
+    Width = 24
+    Flat = True
+    Glyph.Data = {
+      36040000424D3604000000000000360000002800000010000000100000000100
+      2000000000000004000064000000640000000000000000000000FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00994E
+      0399994E035C9B500400994E031A984D026C984D02A6984D02CC984D02C1984D
+      028C984D024D994E03109C510500A2570A00A65B0D00FFFFFF00FFFFFF009C51
+      05CC9C5105CC9C510585A35806BFC8841AE3EAA71FF5FCB920FFFCB920F1EAA6
+      1FCFC78219A6A35909789D520622A2570A00A65B0D00FFFFFF00FFFFFF00A257
+      0ACCF9BF40FFA2570ACCF7B52AFFF6B01CFFF7B11EFFF8B527FFF8B527F1F7B1
+      1ED6F6B01CB4F8BA3490AB62105FA3580B19A65B0D00FFFFFF00FFFFFF00A85D
+      0ECCF2B339FFF3B844FFEEA824FFF2B339FFC37E23DCA85D0ECCA85D0EC1C27E
+      22BAE7A937B2EFAB2A90F3B8436DAD631243A95E0F06FFFFFF00FFFFFF00AF64
+      14CCECB149FFE6A334FFEEB752FFAF6414CCAF641494AD621200AA5F0F00AE63
+      134AAF641488E4A74491E8A83B6DCA88314EAF641419FFFFFF00FFFFFF00B66B
+      19CCEBB861FFE7B057FFE7B057FFEEBF6AFFB66B19CCB76C1A5CB56A1800AF64
+      1400B56A1932C7843178E3A84E6CDCA24C54B66B1925FFFFFF00FFFFFF00BD72
+      1E99BE731FCCBE731FCCBE731FCCBE731FCCBE731FCCBD721E99C0752000C378
+      2300BD721E00BE731F33E5B06140E7B4663FBD721E20FFFFFF00FFFFFF00C67B
+      2620E8B86F3FE6B46C40C57A2533C2782200BF752000C1762100C67B2699C57A
+      25CCC57A25CCC57A25CCC57A25CCC57A25CCC67B2699FFFFFF00FFFFFF00CD82
+      2A25E6B16654E8B5706CD8984478CE832B32CF842C00CB802800CC81295CCD82
+      2ACCF3CD84FFECBD77FFECBD77FFF0C57EFFCD822ACCFFFFFF00FFFFFF00D489
+      3019E2A7554EEDBC766DEEBE7491D4893088D58A314AD98E3300D3882F00D489
+      3094D48930CCF4CD84FFEAB772FFF1C67EFFD48930CCFFFFFF00FFFFFF00DA8F
+      3406DD943A43F8D2896DF4C57D90F4C77AB2E5A852BADB9034C1DB9034CCE5A8
+      52DCF7CD85FFF2C27AFFF8D389FFF7CD85FFDB9034CCFFFFFF00FFFFFF00DC91
+      3500E0953919E49E435FFCD88D90FACF85B4FBD086D6FCD489F1FCD489FFFBD0
+      86FFFACF85FFFBD389FFE19639CCFEDD92FFE19639CCFFFFFF00FFFFFF00DC91
+      3500E1963900E59A3D22E79F4378F1B964A6FACF80CFFEDA8EF1FEDA8EFFFACF
+      81F5F1BB65E3E79E42BFE59A3D85E59A3DCCE59A3DCCFFFFFF00FFFFFF00DC91
+      3500E1963900E59A3D00E89D3F10E99E404DE99E408CE99E40C1E99E40CCE99E
+      40A6E99E406CE89D3F1AE69B3D00E99E405CE99E4099FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFF
+      FF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00FFFFFF00
+    }
   end
 end

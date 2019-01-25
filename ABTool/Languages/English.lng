@@ -1,0 +1,189 @@
+; Author:	AnthonyAxenov, anthonysoprano.93@gmail.com, abtool.ru
+; Date:		20:11 20.05.2015
+[Info]
+; Language name - required
+Name=English
+; ABTool version — required
+ABToolVer=0.8.0
+
+[Main]
+; Bidirectional mode:
+; = 1   - Left to right
+; = 2   - Right to left with right alignment
+; = 3   - Right to left with left alignment
+; = 4   - Right to left with right alignment only for reading (not typing)
+Bidi=1
+
+[SplashForm]
+;
+;	Splash form
+;
+SplashForm_Lab_Loading=Loading...
+[MainForm]
+;
+;	Main form
+;
+;Tabs
+MainForm_Tab_Soft=Programms
+MainForm_Tab_Tools=Utilities
+MainForm_Tab_System=System
+; Deprecated since v0.8.0.313 (19:01 19.05.2015)
+;MainForm_Tab_SysInfo=Common info
+; Deprecated since v0.8.0.313 (19:01 19.05.2015)
+;MainForm_Tab_SysCare=Maintenance
+MainForm_Tab_Log=Log
+
+;Common buttons on toolbars
+MainForm_Btn_List=List
+MainForm_Mnb_ExpandAll=Expand all
+MainForm_Mnb_CollapseAll=Collapse all
+MainForm_Btn_Search=Search
+MainForm_Mnb_PackDefault=Default
+MainForm_Mnb_PacksEdit=Package management...
+
+;"Programms" tab
+MainForm_Btn_SoftCheck=Choose
+MainForm_Mnb_SoftCheckAll=Choose all
+MainForm_Mnb_SoftCheckNone=Choose none
+MainForm_Btn_SoftPackages=Programm packages
+MainForm_Btn_SoftStart=<<<  Start installation  >>>
+
+;"Utilities" tab
+MainForm_Btn_ToolsPackages=Utility packages
+
+;"System" tab
+MainForm_Lab_System=System
+MainForm_SInfo_RowOSVer=OS version
+MainForm_SInfo_RowPCName=PC name
+MainForm_SInfo_RowUserName=User name
+MainForm_Lab_UserVars=Environment variables for
+MainForm_Vars_Col1=Variable
+MainForm_Vars_Col2=Value
+MainForm_Lab_SysVars=System environment variables
+MainForm_Btn_SysInfoRefresh=Refresh
+MainForm_Btn_VarsEdit=Edit variables...
+MainForm_Mnb_CopyVarValue=Copy value to clipboard
+MainForm_Mnb_CopyVarLine=Copy variable with value
+MainForm_Mnb_CopyVarAll=Copy all
+MainForm_Grp_Power=Power management
+MainForm_Btn_PowerOff=Power off
+MainForm_Btn_Reboot=Reboot
+
+;"Log" tab
+MainForm_Btn_LogClear=Clear log
+MainForm_Btn_LogSave=Save log to file...
+
+;Other strings in this window
+;MainForm_Caption=ABTool in English!
+MainForm_Btn_Options=Options
+
+[OptionsForm]
+;
+;	Options form
+;   
+;Tabs
+OptForm_Tab_Common=Common
+OptForm_Tab_Interface=Interface
+OptForm_Tab_Packages=Packages
+OptForm_Tab_About=About
+
+;"Common" tab
+;	"OptForm_Grp_Lang / Language"
+OptForm_Grp_Lang=
+OptForm_Lab_LangFileIs=Filename:
+OptForm_Lab_LangNameIs=Language:
+OptForm_Lab_LangVerIs=Version:
+OptForm_Grp_Soft=«Software» tab
+OptForm_Chb_ChkExitCodes=Immediately report if the return code <> 0
+OptForm_Chb_ChkExitCodesHint=When the installer is finished with a code other than zero, you will be asked to terminate the installation process
+OptForm_Chb_DntUnChkItems=Leave the check box checked with the return code <> 0
+OptForm_Chb_DntUnChkItemsHint=Later, you can try to install only those programs, the installation of which was not completed correctly
+OptForm_Chb_ColorSoftTree=Color software tree list after installing
+OptForm_Chb_ColorSoftTreeHint=When the installation process is complete, a list of programs to be is colored as follows: Failed to start — red, return code <> 0 — blue
+OptForm_Chb_ShowProgress=Show the overall process of software installation
+OptForm_Chb_ShowProgressHint=During installation, the main window will disappear and there will be another, displaying the overall progress of the installation. Otherwise - the main window will not disappear, but will be blocked
+OptForm_Chb_ExpandSoft=Expand software tree when package is loaded 
+OptForm_Chb_ExpandSoftHint=
+OptForm_Chb_QuietREG=Silent import from REG-files
+OptForm_Chb_QuietREGHint=REGEDIT will not ask for confirmation
+OptForm_Grp_Tools=«Utilities» tab
+OptForm_Chb_HideOnTool=Hide ABTool when utility is launched
+OptForm_Chb_HideOnToolHint=When utility is launched, ABTool will not disturb
+OptForm_Chb_ExpandTools=Expand utilities tree when package is loaded 
+OptForm_Chb_ExpandToolsHint=
+;	"OptForm_Url_DownloadLangs / Download other languages"
+;OptForm_Url_DownloadLangs=
+
+;"Interface" tab
+OptForm_Chb_ShowLog=Show log tab
+OptForm_Chb_ShowLogHint=The log appears on the an additional tab and contains complete protocol of events
+OptForm_Chb_DrawOutlines=Draw lists outlines
+OptForm_Chb_DrawOutlinesHint=It applies both to the Software and Utilities tabs
+OptForm_Chb_ScreenSnap=Snap ABTool to the screen borders when moving
+OptForm_Chb_ScreenSnapHint=
+OptForm_Chb_OnTop=Keep ABTool on top
+OptForm_Chb_OnTopHint=
+OptForm_Chb_ShowPkgDesc=Show package descriptions
+OptForm_Chb_ShowPkgDescHint=It applies both to the Software and Utilities tabs
+OptForm_Chb_SrchVisible=Search bar is always shown
+OptForm_Chb_SrchVisibleHint=It applies both to the Software and Utilities tabs
+OptForm_Chb_ScrollLog=Always scroll log to the end
+OptForm_Chb_ScrollLogHint=
+OptForm_Grp_PkgSwitchMethod=Package switching method
+OptForm_Rdb_PkgSwByMenu=Let me choose via package menu
+OptForm_Rdb_PkgSwByMenuHint=It applies both to the Software and Utilities tabs
+OptForm_Rdb_PkgSwByTabs=Show packages as tabs:
+OptForm_Rdb_PkgSwByTabsHint=It applies both to the Software and Utilities tabs
+OptForm_Chb_PkgSwShrinkTabs=Fit all names (long names will be trimmed)
+OptForm_Chb_PkgSwShrinkTabsHint=If disabled, all packages' names may not fit on this panel
+OptForm_Cmb_PkgSwTabsPosHint=Choose package tabs position
+OptForm_Cmb_PkgSwTabsPosTop=Top
+OptForm_Cmb_PkgSwTabsPosBottom=Bottom
+OptForm_Cmb_PkgSwTabsPosLeft=Left
+OptForm_Cmb_PkgSwTabsPosRight=Right
+
+;"Packages" tab
+OptForm_Grp_PkgSoft=Software
+OptForm_Grp_PkgTools=Utilities
+OptForm_Btn_BrowseUserSoftPkg=Choose
+OptForm_Btn_BrowseUserSoftPkgHint=Choose your package in special window
+OptForm_Btn_ClearUserSoftPkgHint=Clear field
+OptForm_Btn_OpenIniDir=Open ABTool_ini directory
+OptForm_Btn_OpenIniDirHint=
+OptForm_Grp_PkgInfo=Package info
+OptForm_Lab_PkgNameIs=Name:
+OptForm_Lab_PkgDescIs=Description:
+
+;"About" tab
+OptForm_Lab_ABToolBuildIs=build
+OptForm_Lab_WhatsNew=What's new in this version:
+OptForm_Url_ReportBug=Report bug
+OptForm_Url_Help=Get help
+OptForm_Btn_CheckUpdates=Check updates
+OptForm_Btn_CheckingUpdates=Checking updates...
+
+;Other strings in this window
+OptForm_Caption=ABTool options
+OptForm_Btn_ResetOptions=Reset
+OptForm_Btn_SaveOptions=Save
+OptForm_Btn_Close=Close
+
+[ProgressForm]
+;
+;	Installation progress form
+;
+
+[ChoosePkgForm]
+;
+;	Form to choose package
+;
+
+[Messages]
+;
+;	Messages to show
+;
+
+[Log]
+;
+;	Log messages
+;

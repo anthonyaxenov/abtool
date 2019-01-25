@@ -5,8 +5,8 @@ unit dMain;
 interface
 
 uses
-  Classes, SysUtils, FileUtil, Controls, Menus, Forms, PopupNotifier,
-  VirtualTrees, uPackage, uPackageList, fOptions;
+  Classes, SysUtils, FileUtil, Controls, Menus, Forms, PopupNotifier, Dialogs,
+  VirtualTrees, uPackage, uPackageList, fOptions, uOptions;
 
 type
 
@@ -47,13 +47,13 @@ type
     procedure mbOptionsPkgClick(Sender: TObject);
     procedure mbRefreshClick(Sender: TObject);
   private
+    // Форма настроек
+    fmOptions: TfmOptions;
     // Подготовка директорий
-    procedure PrepareDirs(); 
+    procedure PrepareDirs();
     // Подготовка списков пакетов
-    procedure PreparePackages();
+    procedure PreparePackageLists();
   public
-    { Публичные переменные, которые доступны во всех юнитах с подключенным uses ..., dMain }
-
     // путь к файлу ABTool.exe
     ABToolExePath: String;
     // путь к директории ABTool
@@ -65,11 +65,13 @@ type
     // путь к директории ABTool\Logs
     ABToolLogPath: String;
     // Список объектов пакетов программ для установки
-    SoftPackages: TPackageList; 
+    SoftPackages: TPackageList;
     // Список объектов пакетов утилит для запуска
     ToolsPackages: TPackageList;
     // Установка состояния отметки для всех корневых нод указанного дерева
     procedure SetVSTCheckState(AVST: TBaseVirtualTree; AState: boolean);
+    // Показ формы настроек на указанной странице и возврат модального результата
+    function CallOptionsForm(APageIndex: byte = 0): TModalResult;
   end;
 
 var
@@ -82,7 +84,7 @@ uses fMain;
 {$R *.lfm}
 
 { TdmMain }
-                       
+
 {------------------------------------------------------------------------------
 Конструктор:   TdmMain.Create()
 Назначение:    Создание датамодуля, подготовка путей и списков пакетов
@@ -90,29 +92,20 @@ uses fMain;
 procedure TdmMain.DataModuleCreate(Sender: TObject);
 begin
   PrepareDirs();
-  PreparePackages();
+  PreparePackageLists();
+  TOptions.Create(dmMain.ABToolDataPath + '\abtool.ini');
 end;
 
-procedure TdmMain.mbAboutClick(Sender: TObject);
-var
-  fmOptions: TfmOptions;
-begin
-  fmOptions := TfmOptions.Create(fmMain);
-  fmOptions.PageControl.ActivePageIndex := 2;
-  fmOptions.ShowModal;
-end;
-
-         
 {------------------------------------------------------------------------------
-Конструктор:   TdmMain.SetVSTCheckState()
-Назначение:    Установка состояния отметки для всех корневых нод указанного дерева
+Конструктор: TdmMain.SetVSTCheckState()
+Назначение:  Установка состояния отметки для всех корневых нод указанного дерева
 Вх. параметры:
   AVST: TBaseVirtualTree - дерево
   AState: boolean - состояние отметок: TRUE выбрать все, FALSE снять выбор со всех
 ------------------------------------------------------------------------------}
 procedure TdmMain.SetVSTCheckState(AVST: TBaseVirtualTree; AState: boolean);
 var
-  Node: PVirtualNode;  
+  Node: PVirtualNode;
 
   // Установка состояния отметки ноды-родителя дочерним нодам
   procedure CheckChildNodes(ANode: PVirtualNode);
@@ -147,23 +140,23 @@ begin
 end;
 
 {------------------------------------------------------------------------------
-Конструктор:   TdmMain.mbCheckAllClick()
-Назначение:    Обработка клика п. меню "Выбрать всё"
+Конструктор: TdmMain.mbCheckAllClick()
+Назначение:  Обработка клика п. меню "Выбрать всё"
 ------------------------------------------------------------------------------}
 procedure TdmMain.mbCheckAllClick(Sender: TObject);
 begin
   SetVSTCheckState(fmMain.vstSoftPkgContents, true);
-end; 
-     
+end;
+
 {------------------------------------------------------------------------------
-Конструктор:   TdmMain.mbCheckNoneClick()
-Назначение:    Обработка клика п. меню "Снять выбор"
+Конструктор: TdmMain.mbCheckNoneClick()
+Назначение:  Обработка клика п. меню "Снять выбор"
 ------------------------------------------------------------------------------}
 procedure TdmMain.mbCheckNoneClick(Sender: TObject);
 begin
   SetVSTCheckState(fmMain.vstSoftPkgContents, false);
 end;
-      
+
 {------------------------------------------------------------------------------
 Процедура:  TdmMain.mbCollapseTreeClick()
 Назначение: Сворачивание дерева на активной вкладке главного окна
@@ -199,9 +192,9 @@ begin
     1: fmMain.btnToolsPkgReload.Click;
   end;
 end;
-                    
+
 {------------------------------------------------------------------------------
-Процедура:  TdmMain.PreparePackages()
+Процедура:  TdmMain.PrepareDirs()
 Назначение: Подготовка директорий
 ------------------------------------------------------------------------------}
 procedure TdmMain.PrepareDirs();
@@ -218,34 +211,64 @@ begin
   if not DirectoryExists(ABToolLogPath) then
     ForceDirectories(ABToolLogPath);
 end;
-       
+
 {------------------------------------------------------------------------------
-Процедура:  TdmMain.PreparePackages()
+Процедура:  TdmMain.PreparePackageLists()
 Назначение: Подготовка списков пакетов
 ------------------------------------------------------------------------------}
-procedure TdmMain.PreparePackages();
+procedure TdmMain.PreparePackageLists();
 begin
   SoftPackages  := TPackageList.Create;
   SoftPackages.Load(ptSoft);
   ToolsPackages := TPackageList.Create;
   ToolsPackages.Load(ptTools);
-end;    
-
-procedure TdmMain.mbOptionsMainClick(Sender: TObject);
-var
-  fmOptions: TfmOptions;
-begin
-  fmOptions := TfmOptions.Create(fmMain);
-  fmOptions.ShowModal;
 end;
 
-procedure TdmMain.mbOptionsPkgClick(Sender: TObject);
-var
-  fmOptions: TfmOptions;
+{------------------------------------------------------------------------------
+Функция:    TdmMain.CallOptionsForm()
+Назначение: Показ формы настроек на указанной странице и возврат модального
+  результата
+Возвращает: TModalResult
+------------------------------------------------------------------------------}
+function TdmMain.CallOptionsForm(APageIndex: byte = 0): TModalResult;
 begin
-  fmOptions := TfmOptions.Create(fmMain);
-  fmOptions.PageControl.ActivePageIndex := 1;
-  fmOptions.ShowModal;
+  if fmOptions = nil then
+    fmOptions := TfmOptions.Create(fmMain);
+  fmOptions.PageControl.ActivePageIndex := APageIndex;
+  Result := fmOptions.ShowModal;
+end;
+
+{------------------------------------------------------------------------------
+Процедура:  TdmMain.mbOptionsMainClick()
+Назначение: Обработка клика п. меню "Настройки - Основные..."
+------------------------------------------------------------------------------}
+procedure TdmMain.mbOptionsMainClick(Sender: TObject);
+begin
+  CallOptionsForm;
+end;
+
+{------------------------------------------------------------------------------
+Процедура:  TdmMain.mbOptionsPkgClick()
+Назначение: Обработка клика п. меню "Настройки - Управление пакетами..."
+------------------------------------------------------------------------------}
+procedure TdmMain.mbOptionsPkgClick(Sender: TObject);
+begin
+  case CallOptionsForm(1) of
+    mrOK: ;//ShowMessage('mrOK');
+    mrClose: ;//ShowMessage('mrClose');
+  end;
+end;
+
+{------------------------------------------------------------------------------
+Процедура:  TdmMain.mbAboutClick()
+Назначение: Обработка клика п. меню "Помощь - О программе..."
+------------------------------------------------------------------------------}
+procedure TdmMain.mbAboutClick(Sender: TObject);
+begin
+  case CallOptionsForm(2) of
+    mrOK: ;//ShowMessage('mrOK');
+    mrClose: ;//ShowMessage('mrClose');
+  end;
 end;
 
 end.

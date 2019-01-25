@@ -13,7 +13,8 @@ uses {$IFDEF UNIX} {$IFDEF UseCThreads}
   uPackage,
   uPackageUtils,
   uPackageList,
-  fOptions;
+  fOptions,
+  uOptions;
 
 {$R *.res}
 

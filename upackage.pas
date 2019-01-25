@@ -26,9 +26,9 @@ type
   TPackage = class(TIniFile)
   strict private
     // Имя пакета: [PackageInfo] Name
-    FName: String;
+    FName: string;
     // Описание пакета: [PackageInfo] Description
-    FDescription: String;
+    FDescription: string;
     // Тип пакета
     FType: TPackageType;
   private
@@ -38,19 +38,19 @@ type
     function SetType(): TPackageType;
   public
     // Имя пакета: [PackageInfo] Name
-    property Name: String read FName;
+    property Name: string read FName;
     // Описание пакета: [PackageInfo] Description
-    property Description: String read FDescription;
+    property Description: string read FDescription;
     // Тип пакета
     property PackageType: TPackageType read FType;
 
     // Создание объекта пакета и установка информации о нём
-    constructor Create(APkgFilename: Ansistring); overload;
-    // Деструктор
+    constructor Create(AIniFilename: string); overload;
+    // Деструктор объекта пакета
     destructor Destroy(); override;
 
     // Запуск исполняемого файла и получение результатов запуска
-    function ExecuteItem(const AFileName, AParams: String; AHideMainWindow: Boolean;
+    function ExecuteItem(const AFileName, AParams: string; AHideMainWindow: Boolean;
       Out AOutExitcode: Cardinal): Boolean;
   end; // TPackage
 
@@ -61,33 +61,33 @@ implementation
 {------------------------------------------------------------------------------
 Конструктор:   TPackage.Create()
 Назначение:    Создание объекта пакета и установка информации о нём
-Вх. параметры: APkgFilename: Ansistring - путь к ini-файлу
+Вх. параметры: AIniFilename: string - путь к ini-файлу
 ------------------------------------------------------------------------------}
-constructor TPackage.Create(APkgFilename: Ansistring);
+constructor TPackage.Create(AIniFilename: string);
 begin
-  inherited Create(APkgFilename, [ifoStripComments, ifoStripInvalid]);
+  inherited Create(AIniFilename, [ifoStripComments, ifoStripInvalid]);
   SetProperties();
 end;
 
 {------------------------------------------------------------------------------
-Процедура:     TPackage.SetType()
-Назначение:    Установка информации о пакете
+Процедура:  TPackage.SetType()
+Назначение: Установка информации о пакете
 ------------------------------------------------------------------------------}
 procedure TPackage.SetProperties();
 begin
-  FName := ReadString('PackageInfo', 'Name', '<без названия>');
-  FDescription := ReadString('PackageInfo', 'Description', '<без описания>');
+  FName := Readstring('PackageInfo', 'Name', '<без названия>');
+  FDescription := Readstring('PackageInfo', 'Description', '<без описания>');
   FType := SetType();
 end;
 
 {------------------------------------------------------------------------------
-Функция:       TPackage.SetType()
-Назначение:    Определение типа пакета по имени его файла
-Возвращает:    TPackageType - тип пакета
+Функция:    TPackage.SetType()
+Назначение: Определение типа пакета по имени его файла
+Возвращает: TPackageType - тип пакета
 ------------------------------------------------------------------------------}
 function TPackage.SetType(): TPackageType;
 var
-  SubStr: String;
+  SubStr: string;
 begin
   SubStr := Copy(ExtractFileName(FileName), 1, 4);
   if (LowerCase(SubStr) = 'soft') then
@@ -99,7 +99,7 @@ begin
 end;
 
 {------------------------------------------------------------------------------
-Деструктор:    TPackage.Destroy()
+Деструктор: TPackage.Destroy()
 ------------------------------------------------------------------------------}
 destructor TPackage.Destroy();
 begin
@@ -110,14 +110,14 @@ end;
 Функция:          TPackage.ExecuteItem()
 Назначение:       Запуск исполняемого файла и получение результатов запуска
 Вх. параметры:
-  AFileName       : String - путь к исполняемому файлу
-  AParams         : String - дополнительные параметры запуска
+  AFileName       : string - путь к исполняемому файлу
+  AParams         : string - дополнительные параметры запуска
   AHideMainWindow : Boolean - скрывать главное окно ABTool (true) или нет (false)
 Вых. параметры:
   AOutExitcode    : Cardinal - код завершения процесса
 Возвращает:       boolean - true при успешном запуске программы, false при неудаче
 ------------------------------------------------------------------------------}
-function TPackage.ExecuteItem(const AFileName, AParams: String; AHideMainWindow: Boolean;
+function TPackage.ExecuteItem(const AFileName, AParams: string; AHideMainWindow: Boolean;
   out AOutExitcode: Cardinal): Boolean;
 begin
 

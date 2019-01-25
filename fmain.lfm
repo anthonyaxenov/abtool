@@ -1,7 +1,7 @@
 object fmMain: TfmMain
-  Left = 301
+  Left = 1513
   Height = 450
-  Top = 108
+  Top = 182
   Width = 350
   BorderIcons = [biSystemMenu, biMinimize]
   Caption = 'ABTool'
